@@ -13,6 +13,7 @@ export class ComposeMessageComponent {
 	@HostBinding('style.position')  position = 'absolute';
 	details: string;
 	sending: boolean = false;
+	message: string;
 
 	constructor(private router: Router) {}
 
