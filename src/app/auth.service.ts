@@ -30,13 +30,13 @@ export class AuthService {
 		console.log('AuthService.login redirectUrl=['+this.redirectUrl+'] loginCode=['+loginCode+'] postalCode=['+postalCode+']');
 
 		//try to do a username/passwor oauth flow
-		//this.sfService.login().subscribe(result => console.log(result));
-		//return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
+		this.sfService.login().subscribe(result => console.log(result));
+		return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
 
 		//try and call a public VF page
-		return this.http.get("https://rockmelia-developer-edition.ap2.force.com/login?loginCode="+loginCode+"&postalcode="+postalCode)
-                    .map(this.extractData)
-                    .catch(this.handleError);
+		//return this.http.get("https://rockmelia-developer-edition.ap2.force.com/login?loginCode="+loginCode+"&postalcode="+postalCode)
+        //            .map(this.extractData)
+        //            .catch(this.handleError);
 
 
 	}
