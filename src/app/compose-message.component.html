@@ -1,0 +1,27 @@
+<div id="myModal" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close" (click)="cancel()">&times;</span>
+
+			<h3>Contact Andrew & Amelia</h3>
+			<div class="modal-body">
+				<div *ngIf="details">
+					{{ details }}
+				</div>
+				<div>
+					<label>Message: </label>
+				</div>
+				<div>
+					<textarea [(ngModel)]="message" rows="10" cols="35" [disabled]="sending"></textarea>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<p *ngIf="!sending">
+					<button (click)="send()">Send</button>
+					<button (click)="cancel()">Cancel</button>
+				</p>
+			</div>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+<div class="login-div">
+	<h3>login component</h3>
+    <p>{{message}}</p>
+
+ 	<div>
+      <label>Login Code: </label>
+      <input [(ngModel)]="loginCode" placeholder="Login Code"/>
+    </div>
+ 	<div>
+      <label>Postcode: </label>
+      <input [(ngModel)]="postcode" placeholder="Postcode"/>
+    </div>
+
+	<button (click)="doLogin()">login</button>
+
+
+</div>
+
