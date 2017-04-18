@@ -1,5 +1,5 @@
 import { Injectable } 		from '@angular/core';
-import { Http, Response }   from '@angular/http';
+import { Http, Response, Headers, RequestOptions }   from '@angular/http';
 
 import { Observable } 		from 'rxjs/Observable';
 
@@ -30,13 +30,24 @@ export class AuthService {
 		console.log('AuthService.login redirectUrl=['+this.redirectUrl+'] loginCode=['+loginCode+'] postalCode=['+postalCode+']');
 
 		//try to do a username/passwor oauth flow
-		this.sfService.login().subscribe(result => console.log(result));
-		return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
+		//this.sfService.login().subscribe(result => console.log(result));
+		//return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
 
 		//try and call a public VF page
-		//return this.http.get("https://rockmelia-developer-edition.ap2.force.com/login?loginCode="+loginCode+"&postalcode="+postalCode)
-        //            .map(this.extractData)
-        //            .catch(this.handleError);
+		//let url = "https://blooming-brook-30647.herokuapp.com/";
+		let url = "https://lit-castle-91835.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
+		//let targetEndpoint = "https://rockmelia-developer-edition.ap2.force.com";
+		let headers = new Headers();
+		//headers.append('Content-Type', 'application/json');
+		//headers.append('Target-URL', targetEndpoint);
+		headers.append('X-Requested-With', 'XMLHttpRequest');
+
+    	let options = new RequestOptions({ headers: headers });
+		console.log(headers);
+    	console.log(options);
+		return this.http.get(url + "login?loginCode="+loginCode+"&postalcode="+postalCode, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
 
 
 	}
