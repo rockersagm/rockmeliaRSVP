@@ -35,7 +35,7 @@ export class AuthService {
 
 		//try and call a public VF page
 		//let url = "https://blooming-brook-30647.herokuapp.com/";
-		let url = "https://lit-castle-91835.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
+		let url = "https://rockmelia-cors-anywhere.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
 		//let targetEndpoint = "https://rockmelia-developer-edition.ap2.force.com";
 		let headers = new Headers();
 		//headers.append('Content-Type', 'application/json');
