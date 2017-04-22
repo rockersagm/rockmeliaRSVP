@@ -5,6 +5,14 @@
 		#rockmelia wedding October 28 2017
 	</p>
 
+    <p>{{family.Id}} - {{family.Name}}</p>
+
+	<ul >
+      <li *ngFor="let guest of family.Contacts">
+        <span>{{ guest.Id }}</span> {{ guest.Name }}
+      </li>
+     </ul>
+
 	<nav>
 		<a routerLink="login" (click)="[gotoLogout()]">Logout</a>
 	</nav>

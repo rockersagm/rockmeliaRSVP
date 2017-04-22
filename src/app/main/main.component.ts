@@ -1,9 +1,11 @@
-//TODO add animations https://angular.io/docs/ts/latest/guide/animations.html
+	//TODO add animations https://angular.io/docs/ts/latest/guide/animations.html
 
 import { Component, OnInit } 	from '@angular/core';
 import { Router } 				from '@angular/router';
 import { DialogService }  		from '../dialog.service';
-import { AuthService }      		from '../auth.service';
+import { AuthService }      	from '../auth.service';
+import { SFService }          	from '../sf.service';
+import { Family, Contact }      from '../Family';
 
 @Component({
   selector: 'app-main',
@@ -13,13 +15,19 @@ import { AuthService }      		from '../auth.service';
 export class MainComponent implements OnInit {
 
 	pendingChanges :boolean = true;
+	family : Family;
+
 	constructor(private router: Router,
 				public authService: AuthService,
-				public dialogService: DialogService) {
+				public dialogService: DialogService,
+				private sfService: SFService) {
+
+		console.log('MainComponent constructor =' + this.sfService.loadData());
 
 	}
 
 	ngOnInit() {
+		this.family = this.sfService.loadData();
 	}
 
 	gotoLogout() {

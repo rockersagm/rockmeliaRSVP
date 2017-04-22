@@ -12,7 +12,6 @@ import { AuthService }      from './auth.service';
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(private authService: AuthService, private router: Router) {
-  	console.log('AuthGuard constructor');
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
@@ -32,9 +31,8 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   checkLogin(url: string): boolean {
-  	console.log('AuthGuard.checkLogin');
-    if (this.authService.isLoggedIn) {
-  	  	console.log('AuthGuard.checkLogin returning TRUE');
+  	if (this.authService.isLoggedIn) {
+  	  	//console.log('AuthGuard.checkLogin returning TRUE');
     	return true;
     }
 

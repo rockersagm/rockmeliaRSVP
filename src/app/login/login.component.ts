@@ -19,17 +19,13 @@ export class LoginComponent implements OnInit {
 		console.log('login component constructing');
 	}
 
-	setMessage() {
-		this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-	}
-
 	doLogin() {
 		console.log("login request loginCode=["+this.loginCode+"] postcode=["+this.postcode+"]");
 
 		this.message = 'Trying to log in ...';
 
-		this.authService.login(this.loginCode, this.postcode).subscribe(() => {
-			this.setMessage();
+		this.authService.login(this.loginCode, this.postcode).subscribe((val) => {
+			this.message = val;
 			if (this.authService.isLoggedIn) {
 				// Get the redirect URL from our auth service
 				// If no redirect has been set, use the default
@@ -53,7 +49,6 @@ export class LoginComponent implements OnInit {
 
 	doLogout() {
 		this.authService.logout();
-		this.setMessage();
 	}
 
 	ngOnInit() {
