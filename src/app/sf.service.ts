@@ -6,13 +6,48 @@ import 'rxjs/add/operator/catch';
 
 import { Family }          from './Family';
 
+import '../js/ua-parser.min.js';
+
+declare var UAParser: any;
 
 @Injectable()
 export class SFService {
 
 	family : Family;
+	audit : Audit;
 
 	constructor(private http: Http) {
+	}
+
+	public getDetails() {
+
+		this.http.get('//freegeoip.net/json/')
+					.map((data) => this.extractIPData(data)).subscribe();
+	}
+
+	private extractIPData(res: Response) {
+
+		let body = res.json();
+		if(!body.error) {
+			this.audit = body;
+		}
+
+		//parse the user agent details
+		var parser = new UAParser();
+		var result = parser.getResult();
+	    console.log(result);
+
+    	this.audit.browser = result.browser.name;
+    	this.audit.browserVersion = result.browser.version;
+		this.audit.cpuType = result.cpu.architecture;
+		this.audit.deviceModel = result.device.model;
+		this.audit.deviceType = result.device.type;
+		this.audit.deviceVendor = result.device.vendor;
+		this.audit.osName = result.os.name;
+		this.audit.osVersion = result.os.version;
+
+		return body;
+
 	}
 
 	login(loginCode: String, postalCode: String) : Observable<any> {
@@ -21,9 +56,28 @@ export class SFService {
 		let headers = new Headers();
 		headers.append('X-Requested-With', 'XMLHttpRequest');
 
+		if(this.audit!=undefined) {
+			headers.append('audit-IP', this.audit.ip);
+			headers.append('audit-CountryName', this.audit.country_name);
+			headers.append('audit-RegionName', this.audit.region_name);
+			headers.append('audit-Lat', this.audit.latitude);
+			headers.append('audit-Long', this.audit.longitude);
+			headers.append('audit-Timezone', this.audit.time_zone);
+			headers.append('audit-Postcode', this.audit.zip_code);
+			headers.append('audit-browser', this.audit.browser);
+			headers.append('audit-browserVersion', this.audit.browserVersion);
+			headers.append('audit-cpuType', this.audit.cpuType);
+			headers.append('audit-deviceModel', this.audit.deviceModel);
+			headers.append('audit-deviceType', this.audit.deviceType);
+			headers.append('audit-deviceVendor', this.audit.deviceVendor);
+			headers.append('audit-osName', this.audit.osName);
+			headers.append('audit-osVersion', this.audit.osVersion);
+		}
+
 		let options = new RequestOptions({ headers: headers });
 		console.log(headers);
 		console.log(options);
+
 
 		return this.http.get(url + "login?loginCode="+loginCode+"&postalcode="+postalCode, options)
 						.map((data) => this.extractData(data))
@@ -40,9 +94,6 @@ export class SFService {
 		else {
 			this.family = body;
 			this.family.Contacts = body.Contacts.records;
-			console.log('extractData.family.Family_Id__c='+this.family.Family_Id__c);
-			console.log('extractData.family.Id='+this.family.Id);
-			console.log('extractData.family.Contacts[0].Name='+this.family.Contacts[0].Name);
 
 			return "Success";
 		}
@@ -67,4 +118,25 @@ export class SFService {
 	}
 
 
+}
+
+class Audit {
+
+	browser: string;
+	browserVersion: string;
+	cpuType: string;
+	deviceModel: string;
+	deviceType: string;
+	deviceVendor: string;
+	osName: string;
+	osVersion: string;
+
+	constructor(	public ip: string,
+  					public country_name: string,
+  					public region_name: string,
+  					public latitude: string,
+  					public longitude: string,
+  					public time_zone: string,
+  					public zip_code: string
+  				) { }
 }

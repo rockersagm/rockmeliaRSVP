@@ -12,7 +12,10 @@ import { CanDeactivateGuard }    from '../can-deactivate-guard.service';
 const routes = [
 	{	path: '',
 		component: MainComponent,
-	    canActivate: [AuthGuard],
+
+		//*************  COMMENTED OUT FOR TESTING ***************
+	    //canActivate: [AuthGuard],
+
         canDeactivate: [CanDeactivateGuard],
 		children: [
 	      {

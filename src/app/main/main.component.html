@@ -5,13 +5,25 @@
 		#rockmelia wedding October 28 2017
 	</p>
 
-    <p>{{family.Id}} - {{family.Name}}</p>
+	<p>{{family.Id}} - {{family.Name}}</p>
 
-	<ul >
-      <li *ngFor="let guest of family.Contacts">
-        <span>{{ guest.Id }}</span> {{ guest.Name }}
-      </li>
-     </ul>
+	<table>
+
+		<tr>
+			<th>&nbsp;</th>
+			<th>Friday</th>
+			<th>Saturday Ceremony 4pm</th>
+			<th>Saturday Reception 7pm</th>
+			<th>Sunday Brunch</th>
+		</tr>
+		<tr *ngFor="let guest of family.Contacts">
+			<td>{{ guest.Name }}</td>
+			<td><div class="rsvp-choice">Yes</div><div class="rsvp-choice">Sorry, can't make it</div></td>
+			<td><div class="rsvp-choice">Yes</div><div class="rsvp-choice">Sorry, can't make it</div></td>
+			<td><div class="rsvp-choice">Yes</div><div class="rsvp-choice">Sorry, can't make it</div></td>
+			<td><div class="rsvp-choice">Yes</div><div class="rsvp-choice">Sorry, can't make it</div></td>
+		</tr>
+	</table>
 
 	<nav>
 		<a routerLink="login" (click)="[gotoLogout()]">Logout</a>

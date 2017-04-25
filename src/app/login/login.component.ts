@@ -2,6 +2,7 @@ import { Component, OnInit } 		from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AuthService }      		from '../auth.service';
 
+
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
 	constructor(public authService: AuthService,
 				private router: Router) {
 		console.log('login component constructing');
+
 	}
 
 	doLogin() {

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { SFService }          from './sf.service';
+
+//declare	var parser: any;
 
 @Component({
 	selector: 'app-root',
@@ -32,5 +35,14 @@ import { Component } from '@angular/core';
 	]
 })
 export class AppComponent {
-	title = 'app works!';
+	uaParser : any;
+
+	constructor(private sfService: SFService) {
+
+		//get user's ip and other info
+		sfService.getDetails();
+
+		//this.uaParser = new UAParser();
+
+	}
 }
