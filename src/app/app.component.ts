@@ -35,7 +35,6 @@ import { SFService }          from './sf.service';
 	]
 })
 export class AppComponent {
-	uaParser : any;
 
 	constructor(private sfService: SFService) {
 
