@@ -6,7 +6,7 @@
 /out-tsc
 
 # dependencies
-/node_modules
+/node_modules/*
 !/node_modules/bootstrap/dist/css/bootstrap.min.css
 !/node_modules/jquery/dist/jquery.js
 !/node_modules/tether/dist/js/tether.js
