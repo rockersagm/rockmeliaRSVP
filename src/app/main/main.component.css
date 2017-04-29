@@ -38,6 +38,10 @@ table {
   cursor: pointer;
   cursor: hand;
 }
-.rsvp-choice-selected {
-  background-color: #8198c1;
+
+.rsvp-choice-yes {
+  background-color: #4CAF50; /* Green */
+}
+.rsvp-choice-no {
+  background-color: #f16969; /* Light Red */
 }

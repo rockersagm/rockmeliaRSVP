@@ -32,6 +32,22 @@ export class MainComponent implements OnInit {
 
 	}
 
+	onRSVP(guestId, event, rsvp) {
+		console.log('onRSVP clicked guestId='+guestId+' event=' + event + ' rsvp='+rsvp);
+
+
+		this.sfService.submitRSVP(this.family.Id, guestId, event, rsvp).subscribe((val) => {
+			console.log('submit complete val='+val);
+			this.family = this.sfService.loadData();
+
+		});
+	}
+
+  onClick(value){
+  	//	this.family.Contacts[0].RSVP_Friday_Night__c = 'Yes';
+    console.log(value);
+  }
+
 	ngOnInit() {
 
 		var wedding = moment("2017-10-28");
