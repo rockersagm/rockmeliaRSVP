@@ -9,6 +9,7 @@ import { Family, Contact }      from '../Family';
 
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
+import * as moment from 'moment';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class MainComponent implements OnInit {
 
 	pendingChanges :boolean = true;
 	family : Family;
+	daysToGo : string;
 
 	constructor(private router: Router,
 				public authService: AuthService,
@@ -31,6 +33,10 @@ export class MainComponent implements OnInit {
 	}
 
 	ngOnInit() {
+
+		var wedding = moment("2017-10-28");
+		var now = moment();
+		this.daysToGo =  (wedding.diff(now, 'days')+1).toString();
 		this.family = this.sfService.loadData();
 
 		//TEMP - DELETE THIS************************************************

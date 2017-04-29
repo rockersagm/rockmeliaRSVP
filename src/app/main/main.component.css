@@ -1,8 +1,23 @@
  .main-div {
  	border-style: inset;
- 	background-color: green;
- 	margin:10px;
+ 	display:block;
+ 	margin:auto;
  }
+
+.centre {
+ 	margin: auto;
+ 	text-align: center;
+ 	margin: 0px auto;
+    float: none;
+  	display: block;
+
+ }
+
+table {
+    margin: 0px auto;
+ 	display:block;
+}
+
 
 
 /* RSVP choices "Yes" "No" */

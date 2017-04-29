@@ -1,51 +1,72 @@
 
 <div class="container-fluid main-div">
-	<h3>main component</h3>
 
 	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-		<a class="navbar-brand" href="#">#rockmelia Wedding Website</a>
+			<a class="navbar-brand" href="#">#rockmelia Wedding Website</a>
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="#">RSVP<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Link</a>
+					<a class="nav-link" href="#">Venue Details</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Gift Registry</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Accommodation Options</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 
+	<img class="img-fluid centre" src="../../assets/weddinglogo.png" alt="#rockmelia Wedding RSVP"/>
 
-	<p>
-		#rockmelia wedding October 28 2017
-	</p>
+	<div class="card text-center">
+		<div class="card-header">
+			<h3 class="centre">
+				{{family.Name}}'s RSVP Details
+			</h3>  </div>
+			<div class="card-block text-center">
+				<!--<p>{{family.Id}} - {{family.Name}}</p>-->
+				<div class="m-x-auto p-a-2 center">
+					<table class="text-center table table-responsive  table-hover center">
+						<thead>
 
-	<p>{{family.Id}} - {{family.Name}}</p>
+							<tr>
+								<th>&nbsp;</th>
+								<th>Friday</th>
+								<th>Saturday Ceremony 4pm</th>
+								<th>Saturday Reception 7pm</th>
+								<th>Sunday Brunch</th>
+							</tr>
+						</thead>
+						<tbody>
 
-	<table>
+							<tr *ngFor="let guest of family.Contacts">
+								<th scope="row">{{ guest.Name }}</th>
+								<td><div class="rsvp-choice">Yes</div><div class="rsvp-choice">Sorry, can't make it</div></td>
+								<td><div class="rsvp-choice">Yes</div><div class="rsvp-choice">Sorry, can't make it</div></td>
+								<td><div class="rsvp-choice">Yes</div><div class="rsvp-choice">Sorry, can't make it</div></td>
+								<td><div class="rsvp-choice">Yes</div><div class="rsvp-choice">Sorry, can't make it</div></td>
+							</tr>
+						</tbody>
 
-		<tr>
-			<th>&nbsp;</th>
-			<th>Friday</th>
-			<th>Saturday Ceremony 4pm</th>
-			<th>Saturday Reception 7pm</th>
-			<th>Sunday Brunch</th>
-		</tr>
-		<tr *ngFor="let guest of family.Contacts">
-			<td>{{ guest.Name }}</td>
-			<td><div class="rsvp-choice">Yes</div><div class="rsvp-choice">Sorry, can't make it</div></td>
-			<td><div class="rsvp-choice">Yes</div><div class="rsvp-choice">Sorry, can't make it</div></td>
-			<td><div class="rsvp-choice">Yes</div><div class="rsvp-choice">Sorry, can't make it</div></td>
-			<td><div class="rsvp-choice">Yes</div><div class="rsvp-choice">Sorry, can't make it</div></td>
-		</tr>
-	</table>
+					</table>
+				</div>
 
-	<nav>
-		<a routerLink="login" (click)="[gotoLogout()]">Logout</a>
-	</nav>
+			</div>
+			<div class="card-footer text-muted">
+				<p>{{daysToGo}} days to go!</p>
+			</div>
 
-</div>
+		</div>
+		<nav>
+			<a routerLink="login" (click)="[gotoLogout()]">Logout</a>
+		</nav>
+
+	</div>

@@ -107,6 +107,30 @@ export class SFService {
 		return this.family;
 	}
 
+	submitRSVP(guestID : string, event : string, rsvp : string) : Observable<any> {
+		let url = "https://rockmelia-cors-anywhere.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
+		let headers = new Headers();
+		headers.append('Content-Type','text/plain');
+		let options = new RequestOptions({ headers: headers });
+
+		return this.http.get(url + "rsvp?guestId="+guestID+"&event="+event+"&rsvp="+rsvp, options)
+						.map((data) => this.extractRSVPData(data))
+						.catch(this.handleError);
+	}
+
+	private extractRSVPData(res: Response) {
+
+		let body = res.json();
+		console.log(body);
+		if(body.error) {
+			return body.error;
+		}
+		else {
+			return "Success";
+		}
+
+	}
+
 	private handleError (error: Response | any) {
 		let errMsg: string;
 		if (error instanceof Response) {
