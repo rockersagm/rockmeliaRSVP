@@ -24,7 +24,6 @@
     "@angular/http": "^4.0.2",
     "@angular/platform-browser": "^4.0.2",
     "@angular/platform-browser-dynamic": "^4.0.2",
-    "@angular/platform-browser/animations": "^4.0.0",
     "@angular/platform-server": "^4.0.2",
     "@angular/router": "^4.0.2",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.25",
