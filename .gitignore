@@ -7,6 +7,7 @@
 
 # dependencies
 /node_modules
+!/node_modules/bootstrap/dist/css/bootstrap.min.css"
 
 # IDEs and editors
 /.idea
