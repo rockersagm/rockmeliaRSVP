@@ -8,6 +8,7 @@ import { SFService }          	from '../sf.service';
 import { Family, Contact }      from '../Family';
 
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -32,37 +33,40 @@ export class MainComponent implements OnInit {
 	ngOnInit() {
 		this.family = this.sfService.loadData();
 
-		//*************  HARD CODE FOR TESTING PURPOSES **********
-		let c1 = new Contact("0032800000gZ07FAAS",
-							"Andrew Manetakis",
-					        false, //Dairy_Free__c:
-					        false, //Gluten_Free__c:
-					        "3025", //Guest_ID__c:
-					        false, //Vegetarian__c:
-					        false, //Nut_Free__c:
-					        "Yes", //RSVP_Ceremony__c:
-					        "No", //RSVP_Friday_Night__c:
-					        "No Response", //RSVP_Reception__c:
-					        "No Response" //RSVP_Sunday_Brunch__c:
-		        			);
 
-		let c2 = new Contact("0032800000gZ07FAAS",
-							"Amelia Hill-Scott",
-					        false, //Dairy_Free__c:
-					        false, //Gluten_Free__c:
-					        "8280", //Guest_ID__c:
-					        true, //Vegetarian__c:
-					        false, //Nut_Free__c:
-					        "No Response", //RSVP_Ceremony__c:
-					        "No", //RSVP_Friday_Night__c:
-					        "", //RSVP_Reception__c:
-					        "Yes" //RSVP_Sunday_Brunch__c:
-		        			);
+		if (!environment.production) {
+			//*************  HARD CODE FOR TESTING PURPOSES **********
+			let c1 = new Contact("0032800000gZ07FAAS",
+								"Andrew Manetakis",
+						        false, //Dairy_Free__c:
+						        false, //Gluten_Free__c:
+						        "3025", //Guest_ID__c:
+						        false, //Vegetarian__c:
+						        false, //Nut_Free__c:
+						        "Yes", //RSVP_Ceremony__c:
+						        "No", //RSVP_Friday_Night__c:
+						        "No Response", //RSVP_Reception__c:
+						        "No Response" //RSVP_Sunday_Brunch__c:
+			        			);
 
-		this.family = new Family("00128000010XWpBAAW",
-								 "Andrew & Amelia",
-								 "1400",
-								 [c1,c2]);
+			let c2 = new Contact("0032800000gZ07FAAS",
+								"Amelia Hill-Scott",
+						        false, //Dairy_Free__c:
+						        false, //Gluten_Free__c:
+						        "8280", //Guest_ID__c:
+						        true, //Vegetarian__c:
+						        false, //Nut_Free__c:
+						        "No Response", //RSVP_Ceremony__c:
+						        "No", //RSVP_Friday_Night__c:
+						        "", //RSVP_Reception__c:
+						        "Yes" //RSVP_Sunday_Brunch__c:
+			        			);
+
+			this.family = new Family("00128000010XWpBAAW",
+									 "Andrew & Amelia",
+									 "1400",
+									 [c1,c2]);
+		}
 
 	}
 

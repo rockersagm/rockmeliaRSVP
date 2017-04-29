@@ -57,6 +57,7 @@ export class SFService {
 		let url = "https://rockmelia-cors-anywhere.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
 		let headers = new Headers();
 		headers.append('X-Requested-With', 'XMLHttpRequest');
+        headers.append('contentType','text/plain');
 
 		if(this.audit!=undefined) {
 			headers.append('audit-IP', this.audit.ip);
