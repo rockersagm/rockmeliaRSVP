@@ -8,7 +8,9 @@ import { Family }          from './Family';
 
 import '../js/ua-parser.min.js';
 
-declare var UAParser: any;
+//declare var UAParser: any;
+declare const UAParser: any;
+//import * as UAParser from '../js/ua-parser.min.js';
 
 @Injectable()
 export class SFService {
