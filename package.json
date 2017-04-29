@@ -24,6 +24,7 @@
     "@angular/http": "^4.0.2",
     "@angular/platform-browser": "^4.0.2",
     "@angular/platform-browser-dynamic": "^4.0.2",
+    "@angular/platform-browser/animations": "^4.0.0",
     "@angular/platform-server": "^4.0.2",
     "@angular/router": "^4.0.2",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.25",
@@ -35,6 +36,7 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
+    "@angular/animations": "^4.0.2",
     "@angular/platform-browser/animations": "^4.0.0",
     "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",

@@ -6,17 +6,18 @@ import { SFService }          from './sf.service';
 @Component({
 	selector: 'app-root',
 	template: `
-<ngb-alert>
-	Random Message
-</ngb-alert>
+
+	<!--
+		<ngb-alert>
+			Random Message
+		</ngb-alert>
+	-->
 
 	<div class="container-fluid app-div">
 
-		<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
+		<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact </a>
 		<router-outlet name="popup"></router-outlet>
 
-
-		<h3>app component</h3>
 		<!--nav>
 			<a routerLink="">Login</a>
 			<a routerLink="main">Main</a>
@@ -28,8 +29,8 @@ import { SFService }          from './sf.service';
 	`,
 	styles: [`
 	.app-div {
-		border-style: double;
-		background-color: yellow;
+		border-style: none;
+		background-color: white;
 	}
 
 	`
