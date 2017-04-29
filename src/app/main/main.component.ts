@@ -33,7 +33,7 @@ export class MainComponent implements OnInit {
 	ngOnInit() {
 		this.family = this.sfService.loadData();
 
-
+		//TEMP - DELETE THIS************************************************
 		if (!environment.production) {
 			//*************  HARD CODE FOR TESTING PURPOSES **********
 			let c1 = new Contact("0032800000gZ07FAAS",
@@ -67,6 +67,7 @@ export class MainComponent implements OnInit {
 									 "1400",
 									 [c1,c2]);
 		}
+		//END TTEMP*************************************************************
 
 	}
 

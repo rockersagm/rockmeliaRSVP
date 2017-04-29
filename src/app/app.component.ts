@@ -6,23 +6,24 @@ import { SFService }          from './sf.service';
 @Component({
 	selector: 'app-root',
 	template: `
-	<div class="app-div">
+<ngb-alert>
+	Random Message
+</ngb-alert>
 
-			<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
-			<router-outlet name="popup"></router-outlet>
+	<div class="container-fluid app-div">
+
+		<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
+		<router-outlet name="popup"></router-outlet>
 
 
-			<h3>app component</h3>
-			<!--nav>
-				<a routerLink="">Login</a>
-				<a routerLink="main">Main</a>
-			</nav-->
+		<h3>app component</h3>
+		<!--nav>
+			<a routerLink="">Login</a>
+			<a routerLink="main">Main</a>
+		</nav-->
+
+		<router-outlet></router-outlet>
 	</div>
-
-	<router-outlet></router-outlet>
-
-	<iframe src="https://rockmelia-developer-edition.ap2.force.com/login?loginCode=1400&postalcode=2017">
-	</iframe>
 
 	`,
 	styles: [`

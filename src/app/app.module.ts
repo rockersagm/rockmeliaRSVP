@@ -14,6 +14,7 @@ import { AppRoutingModule } 		from './app-routing.module';
 import { SFService }          from './sf.service';
 
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
 	declarations: [
@@ -22,6 +23,7 @@ import { SFService }          from './sf.service';
 		ComposeMessageComponent
 	],
 	imports: [
+		NgbModule.forRoot(),
 		BrowserModule,
 		FormsModule,
 		HttpModule,
