@@ -8,23 +8,31 @@ import { MainComponent } 		from './main.component';
 import { AuthGuard }            from '../auth-guard.service';
 import { AuthService }            from '../auth.service';
 import { CanDeactivateGuard }    from '../can-deactivate-guard.service';
+import { VenueComponent } 		from './venue/venue.component';
+import { DashComponent } 		from './dash/dash.component';
+import { RsvpComponent } 		from './rsvp/rsvp.component';
+import { GiftsComponent } 		from './gifts/gifts.component';
 
 const routes = [
 	{	path: '',
 		component: MainComponent,
-
-		//*************  COMMENTED OUT FOR TESTING ***************
+		//*************  COMMENTED OUT FOR DEVELOPMENT ***************
 	    //canActivate: [AuthGuard],
 
         canDeactivate: [CanDeactivateGuard],
 		children: [
 	      {
 	        path: '',
-            canActivateChild: [AuthGuard],
+	        //*************  COMMENTED OUT FOR DEVELOPMENT ***************
+            //canActivateChild: [AuthGuard],
 	        children: [
-	          //{ path: 'crises', component: ManageCrisesComponent },
-	          //{ path: 'heroes', component: ManageHeroesComponent },
-	          //{ path: '', component: AdminDashboardComponent }
+	          //{ path: 'venue', loadChildren: 'app/main/venue/venue.module#VenueComponent' },
+              { path: '', redirectTo: 'dash', pathMatch: 'full' },
+	          { path: 'venue', component: VenueComponent },
+	          { path: 'dash', component: DashComponent },
+	          { path: 'rsvp', component: RsvpComponent },
+	          { path: 'gifts', component: GiftsComponent },
+
 	        ]
 	      }
 	    ]

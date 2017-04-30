@@ -5,11 +5,10 @@
  	margin:auto;
  	padding:0px;
  	border:0px;
- 	width:100%;
-
+ 	min-width:100%;
  }
 
-.centre {
+.center {
  	margin: auto;
  	text-align: center;
  	margin: 0px auto;
@@ -18,35 +17,8 @@
 
  }
 
-table {
-    margin: 0px auto;
+ .welcome {
  	display:block;
-}
+ 	margin:auto;
+ }
 
-
-
-/* RSVP choices "Yes" "No" */
-.rsvp-choice {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-right: 10px;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
-  display:inline;
-
-}
-.rsvp-choice:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-  cursor: pointer;
-  cursor: hand;
-}
-
-.rsvp-choice-yes {
-  background-color: #4CAF50; /* Green */
-}
-.rsvp-choice-no {
-  background-color: #f16969; /* Light Red */
-}

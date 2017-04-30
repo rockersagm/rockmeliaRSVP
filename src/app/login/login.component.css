@@ -1,24 +1,29 @@
  .login-div {
- 	border-style: inset;
- 	background-color: white;
+ 	padding:20px;
+ }
+
+.login-box {
+	background-color: white;
  	padding:10px;
  	max-width: 400px;
  	margin: auto;
- }
+    border: 1px dashed #ddd;
+	box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ddd, 0 0 0 10px #fff, 0 0 2px 10px #eee;
+}
 
- div .rowCustom {
+div .rowCustom {
  	margin-top: 15px;
- }
+}
 
- img {
+img {
 	display: block;
     margin: auto;
     padding: 35px;
- }
+}
 
- p {
+p {
  	padding:5px;
- }
+}
 
 button {
     background-color: #4CAF50; /* Green */

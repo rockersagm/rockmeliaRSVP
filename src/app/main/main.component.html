@@ -6,76 +6,33 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-			<a class="navbar-brand" href="#">#rockmelia Wedding Website</a>
+			<a class="navbar-brand" routerLink="/main/dash">#rockmelia Wedding Website</a>
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">RSVP<span class="sr-only">(current)</span></a>
+					<a class="nav-link" routerLink="/main/dash">Home<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Venue Details</a>
+					<a class="nav-link" routerLink="/main/rsvp">RSVP</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Gift Registry</a>
+					<a class="nav-link" routerLink="/main/venue">Venue Details</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Accommodation Options</a>
+					<a class="nav-link" routerLink="/main/gifts">Gift Registry</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 
-	<img class="img-fluid centre" src="../../assets/weddinglogo.png" alt="#rockmelia Wedding RSVP"/>
 
-	<div class="card text-center">
-		<div class="card-header">
-			<h3 class="centre">
-				{{family.Name}}'s RSVP Details
-			</h3>  </div>
-			<div class="card-block text-center">
-				<!--<p>{{family.Id}} - {{family.Name}}</p>-->
-				<div class="m-x-auto p-a-2 center">
-					<table class="text-center table table-responsive  table-hover center">
-						<thead>
+	<router-outlet></router-outlet>
 
-							<tr>
-								<th>&nbsp;</th>
-								<th>Friday</th>
-								<th>Wedding</th>
-								<th>Sunday Brunch</th>
-							</tr>
-						</thead>
-						<tbody>
-
-							<tr *ngFor="let guest of family.Contacts">
-								<th scope="row">{{ guest.Name }}</th>
-								<td>
-									<div class="rsvp-choice" [class.rsvp-choice-yes]="guest.RSVP_Friday_Night__c=='Yes'" (click)="onRSVP(guest.Id , 'friday', 'Yes')">Yes</div>
-									<div class="rsvp-choice" [class.rsvp-choice-no]="guest.RSVP_Friday_Night__c=='No'" (click)="onRSVP(guest.Id , 'friday', 'No')">Sorry, can't make it</div>
-								</td>
-								<td>
-									<div class="rsvp-choice" [class.rsvp-choice-yes]="guest.RSVP_Reception__c=='Yes'" (click)="onRSVP(guest.Id , 'saturday', 'Yes')">Yes</div>
-									<div class="rsvp-choice" [class.rsvp-choice-no]="guest.RSVP_Reception__c=='No'" (click)="onRSVP(guest.Id , 'saturday', 'No')">Sorry, can't make it</div></td>
-								<td>
-									<div class="rsvp-choice" [class.rsvp-choice-yes]="guest.RSVP_Sunday_Brunch__c=='Yes'" (click)="onRSVP(guest.Id , 'sunday', 'Yes')">Yes</div>
-									<div class="rsvp-choice" [class.rsvp-choice-no]="guest.RSVP_Sunday_Brunch__c=='No'" (click)="onRSVP(guest.Id , 'sunday', 'No')">Sorry, can't make it</div>
-								</td>
-							</tr>
-						</tbody>
-
-					</table>
-				</div>
-
-			</div>
-			<div class="card-footer text-muted">
-				<p>{{daysToGo}} days to go!</p>
-			</div>
-
-			<input #notes type="text">
-			<button (click)="onClick(notes.value)">Submit Notes</button>
-
-		</div>
-		<nav>
-			<a routerLink="login" (click)="[gotoLogout()]">Logout</a>
-		</nav>
-
+	<div class="card-footer text-muted center">
+		<p>{{daysToGo}} days to go!</p>
 	</div>
+
+	<nav class="center">
+		<a routerLink="login" (click)="[gotoLogout()]">Logout</a>
+	</nav>
+
+</div>

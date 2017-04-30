@@ -9,7 +9,7 @@ import { AuthService }      		from './auth.service';
 import { AuthGuard }            	from './auth-guard.service';
 
 const appRoutes: Routes = [
-	{ path: 'login', 	loadChildren:'app/login/login.module#LoginModule'},
+	{ path: 'login', loadChildren:'app/login/login.module#LoginModule'},
 	{ path: 'main', loadChildren:'app/main/main.module#MainModule'},
 	{
 		path: 'compose',

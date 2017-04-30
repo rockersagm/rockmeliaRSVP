@@ -7,34 +7,47 @@ import { SFService }          from './sf.service';
 	selector: 'app-root',
 	template: `
 
-	<!--
-		<ngb-alert>
-			Random Message
-		</ngb-alert>
-	-->
+		<div class="container-fluid app-div">
+			<router-outlet></router-outlet>
 
-	<div class="container-fluid app-div">
+			<div class="footer">
+				<p class="footer-text">
+					#rockmelia RSVP Website 2017
+					<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact </a>
+					<router-outlet name="popup"></router-outlet>
+				</p>
+			</div>
 
-
-
-		<!--nav>
-			<a routerLink="">Login</a>
-			<a routerLink="main">Main</a>
-		</nav-->
-
-		<router-outlet></router-outlet>
-	</div>
-
-	<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact </a>
-	<router-outlet name="popup"></router-outlet>
-
+		</div>
 	`,
 	styles: [`
-	.app-div {
-		border-style: none;
-		background-color: red;
 
-	}
+		.app-div {
+			border-style: none;
+			position: relative;
+		 	margin: 0;
+		 	padding:0px;
+		  	padding-bottom: 3rem;
+		  	min-height: 100%;
+		  	background-color:white;
+		}
+
+		.footer {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			padding: .3rem;
+			background-color: #efefef;
+			text-align: center;
+
+		}
+
+		.footer-text {
+			 font-size: 0.8em;
+			 margin:0px;
+			 padding:0px;
+		}
 
 	`
 	]

@@ -4,13 +4,12 @@ import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { Family }          from './Family';
+import { Family, Contact }          from './Family';
 
 import '../js/ua-parser.min.js';
 
-//declare var UAParser: any;
+import { environment } from '../environments/environment';
 declare const UAParser: any;
-//import * as UAParser from '../js/ua-parser.min.js';
 
 @Injectable()
 export class SFService {
@@ -104,6 +103,43 @@ export class SFService {
 	}
 
 	public loadData() : Family {
+
+		//TEMP - DELETE THIS************************************************
+		if (!environment.production && this.family==undefined) {
+			//*************  HARD CODE FOR TESTING PURPOSES **********
+			let c1 = new Contact("0032800000gZ07FAAS",
+								"Andrew Manetakis",
+						        false, //Dairy_Free__c:
+						        false, //Gluten_Free__c:
+						        "3025", //Guest_ID__c:
+						        false, //Vegetarian__c:
+						        false, //Nut_Free__c:
+						        "Yes", //RSVP_Ceremony__c:
+						        "No", //RSVP_Friday_Night__c:
+						        "No Response", //RSVP_Reception__c:
+						        "No Response" //RSVP_Sunday_Brunch__c:
+			        			);
+
+			let c2 = new Contact("0032800000gZ07FAAS",
+								"Amelia Hill-Scott",
+						        false, //Dairy_Free__c:
+						        false, //Gluten_Free__c:
+						        "8280", //Guest_ID__c:
+						        true, //Vegetarian__c:
+						        false, //Nut_Free__c:
+						        "No Response", //RSVP_Ceremony__c:
+						        "No", //RSVP_Friday_Night__c:
+						        "", //RSVP_Reception__c:
+						        "Yes" //RSVP_Sunday_Brunch__c:
+			        			);
+
+			this.family = new Family("00128000010XWpBAAW",
+									 "Andrew & Amelia",
+									 "1400",
+									 [c1,c2]);
+		}
+		//END TTEMP*************************************************************
+
 		return this.family;
 	}
 
