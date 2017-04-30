@@ -4,19 +4,27 @@
 
 
 	<p>Please enter the Login Code from your invite together with your postcode.</p>
-	<p>{{message}}</p>
 
 	<div class="row rowCustom">
 		<div class="col"><label>Login Code: </label></div>
-		<div class="col"><input [(ngModel)]="loginCode" placeholder="Login Code"/></div>
+		<div class="col"><input #loginField [(ngModel)]="loginCode" placeholder="Login Code"/></div>
 	</div>
 	<div class="row rowCustom">
 		<div class="col"><label>Postcode: </label></div>
-		<div class="col"><input [(ngModel)]="postcode" placeholder="Postcode"/></div>
+		<div class="col"><input #postcodeField [(ngModel)]="postcode" placeholder="Postcode"/></div>
 	</div>
-	<div class="row rowCustom">
-	<div class="col"><button (click)="doLogin()">login</button></div>
-
-
+	<div class="row" style="margin: auto; display:block; text-align: center;">
+		<p>&nbsp;{{message}}&nbsp;</p>
+	</div>
+	<div class="row">
+		<div class="col">
+			<button type="button"
+					(click)="doLogin()"
+					class="btn btn-primary btn-lg "
+					id="load"
+					#loginButton
+					>{{loginText}} <div #spinner style="display: none;" class="ld ld-hourglass ld-cycle"></div>
+			</button>
+		</div>
 	</div>
 

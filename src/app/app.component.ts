@@ -15,8 +15,7 @@ import { SFService }          from './sf.service';
 
 	<div class="container-fluid app-div">
 
-		<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact </a>
-		<router-outlet name="popup"></router-outlet>
+
 
 		<!--nav>
 			<a routerLink="">Login</a>
@@ -26,11 +25,15 @@ import { SFService }          from './sf.service';
 		<router-outlet></router-outlet>
 	</div>
 
+	<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact </a>
+	<router-outlet name="popup"></router-outlet>
+
 	`,
 	styles: [`
 	.app-div {
 		border-style: none;
-		background-color: white;
+		background-color: red;
+
 	}
 
 	`
