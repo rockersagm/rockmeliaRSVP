@@ -27,6 +27,12 @@ export class LoginComponent implements OnInit {
 
 	}
 
+	keyPressed(event) {
+	  if(event.keyCode == 13) {
+	    this.doLogin();
+	  }
+	}
+
 	doLogin() {
 		this.loginField.nativeElement.disabled = true;
 		this.postcodeField.nativeElement.disabled = true;
