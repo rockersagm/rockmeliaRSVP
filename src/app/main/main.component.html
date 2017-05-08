@@ -1,12 +1,49 @@
 
 <div class="container-fluid main-div">
 
-	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
+
+	<div class="row">
+		<div class="col-md-8">
+			<img class="img-fluid " width="180" src="../../assets/weddinglogo.png" alt="#rockmelia Wedding RSVP"/>
+		</div>
+
+		<div class="col-md-2" style="position: relative;">
+			<!-- TODO: Centre the box vertically -->
+			<div class="center hidden-sm-down"
+				 style="position: absolute;
+					    top: 0;
+					    bottom: 0;
+					    left: 0;
+					    right: 0;
+					    width: 250px;
+					    height: 30%;
+					    margin: auto;
+					    "
+    		>
+				<p>W e d d i n g &nbsp; C o u n t d o w n</p>
+				<p>{{daysToGo}}days {{hoursToGo}}hours {{minsToGo}}mins {{secsToGo}}secs</p>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+
+		<div class="collapse navbar-collapse" id="navbarToggler">
 			<a class="navbar-brand" routerLink="/main/dash">#rockmelia Wedding Website</a>
+
+			<div class="navbar-toggler center"  >
+				<p>W e d d i n g &nbsp; C o u n t d o w n</p>
+				<p>{{daysToGo}}days {{hoursToGo}}hours {{minsToGo}}mins {{secsToGo}}secs</p>
+			</div>
+
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active">
 					<a class="nav-link" routerLink="/main/dash">Home<span class="sr-only">(current)</span></a>
@@ -20,6 +57,9 @@
 				<li class="nav-item">
 					<a class="nav-link" routerLink="/main/gifts">Gift Registry</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" routerLink="login" (click)="[gotoLogout()]">Logout</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -27,12 +67,5 @@
 
 	<router-outlet></router-outlet>
 
-	<div class="card-footer text-muted center">
-		<p>{{daysToGo}} days to go!</p>
-	</div>
-
-	<nav class="center">
-		<a routerLink="login" (click)="[gotoLogout()]">Logout</a>
-	</nav>
 
 </div>
