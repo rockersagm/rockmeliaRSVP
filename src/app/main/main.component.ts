@@ -14,11 +14,11 @@ import * as moment from 'moment';
 })
 export class MainComponent implements OnInit {
 
-	private daysToGo : string;
-	private hoursToGo : string;
-	private minsToGo : string;
-	private secsToGo : string;
-	private family : Family;
+	public daysToGo : string;
+	public hoursToGo : string;
+	public minsToGo : string;
+	public secsToGo : string;
+	public family : Family;
 
 	constructor(private router: Router,
 				private authService: AuthService,
