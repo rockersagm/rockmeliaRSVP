@@ -17,6 +17,13 @@
 
  }
 
+.carousel{
+}
+.carousel-image {
+ 	max-height: 300px;
+}
+
+
 .transparent {
 	vertical-align: center;
 	background:#7f7f7f;

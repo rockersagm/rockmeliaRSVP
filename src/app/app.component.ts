@@ -32,22 +32,7 @@ import { SFService }          from './sf.service';
 		  	background-color:white;
 		}
 
-		.footer {
-			position: absolute;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			padding: .3rem;
-			background-color: #efefef;
-			text-align: center;
 
-		}
-
-		.footer-text {
-			 font-size: 0.8em;
-			 margin:0px;
-			 padding:0px;
-		}
 
 	`
 	]

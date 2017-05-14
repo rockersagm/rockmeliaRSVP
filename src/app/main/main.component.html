@@ -1,6 +1,9 @@
 
 <div class="container-fluid main-div">
 
+	<div class="row" class="header">
+		<p class="center welcome">Welcome, {{family.Name}}!</p>
+	</div>
 
 	<div class="row">
 		<div class="col-md-8">
@@ -8,6 +11,8 @@
 		</div>
 
 		<div class="col-md-2" style="position: relative;">
+
+
 			<!-- TODO: Centre the box vertically -->
 			<div class="center hidden-sm-down"
 				 style="position: absolute;
@@ -66,8 +71,6 @@
 		</div>
 	</nav>
 
-
-	<router-outlet></router-outlet>
-
-
 </div>
+
+<router-outlet></router-outlet>

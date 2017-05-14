@@ -9,7 +9,8 @@ import { DashComponent } from './dash/dash.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { GiftsComponent } from './gifts/gifts.component';
 
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
 	declarations: [
@@ -20,7 +21,7 @@ import { GiftsComponent } from './gifts/gifts.component';
 		GiftsComponent
 	],
 	imports: [
-//		NgbModule,
+	NgbModule.forRoot(),
 		CommonModule,
 		FormsModule,
 		MainRoutingModule

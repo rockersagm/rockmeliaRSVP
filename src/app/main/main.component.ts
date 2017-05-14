@@ -1,13 +1,11 @@
 import { Component, OnInit } 	from '@angular/core';
 import { Router } 				from '@angular/router';
 import { AuthService }      	from '../auth.service';
-import { SFService }          	from '../sf.service';
 import { Family, Contact }      from '../Family';
+import { Observable } 			from 'rxjs/Rx';
+import { SFService }          	from '../sf.service';
 
 import * as moment from 'moment';
-import {Observable} from 'rxjs/Rx';
-
-
 
 @Component({
   selector: 'app-main',
@@ -16,19 +14,21 @@ import {Observable} from 'rxjs/Rx';
 })
 export class MainComponent implements OnInit {
 
-	family : Family;
-	daysToGo : string;
-	hoursToGo : string;
-	minsToGo : string;
-	secsToGo : string;
+	private daysToGo : string;
+	private hoursToGo : string;
+	private minsToGo : string;
+	private secsToGo : string;
+	private family : Family;
 
 	constructor(private router: Router,
-				public authService: AuthService,
+				private authService: AuthService,
 				private sfService: SFService) {
 	}
 
 	ngOnInit() {
 		this.family = this.sfService.loadData();
+
+		//run timer update every second
 		Observable.interval(1000)
 					.startWith(0)
 					.subscribe(x => {
@@ -36,15 +36,19 @@ export class MainComponent implements OnInit {
 	  				});
 	}
 
-
-	//TODO: make more efficient
+	//calculate the countdown to the ceremony
 	updateCounter() {
-		var wedding = moment("2017-10-28 16:00");
-		var now = moment();
-		this.daysToGo =  (wedding.diff(now, 'days')).toString();
-		this.hoursToGo =  ( wedding.diff(now, 'hours') - (wedding.diff(now, 'days') * 24) ).toString();
-		this.minsToGo = ( wedding.diff(now, 'minutes') - (wedding.diff(now, 'hours') * 60) ).toString();
-		this.secsToGo = ( wedding.diff(now, 'seconds') - (wedding.diff(now, 'minutes') * 60) ).toString();
+		let wedding = moment("2017-10-28 16:00+11");
+		let now = moment();
+		let days = wedding.diff(now, 'days');
+		let hours = wedding.diff(now, 'hours');
+		let mins =  wedding.diff(now, 'minutes');
+		let secs = wedding.diff(now, 'seconds');
+
+		this.daysToGo = days.toString();
+		this.hoursToGo = (hours - (days * 24) ).toString();
+		this.minsToGo = (mins - (hours * 60) ).toString();
+		this.secsToGo = ( secs - (mins * 60) ).toString();
 	}
 
 	gotoLogout() {
