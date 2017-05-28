@@ -63,11 +63,13 @@ export class LoginComponent implements OnInit {
 				// Redirect the user
 				this.router.navigate([redirect], navigationExtras);
 			}
-			this.loginField.nativeElement.disabled = false;
-			this.postcodeField.nativeElement.disabled = false;
-			this.loginButton.nativeElement.disabled = false;
-			this.loginText = 'Login';
-			this.spinner.nativeElement.style.display = 'none';
+			else {
+				this.loginField.nativeElement.disabled = false;
+				this.postcodeField.nativeElement.disabled = false;
+				this.loginButton.nativeElement.disabled = false;
+				this.loginText = 'Login';
+				this.spinner.nativeElement.style.display = 'none';
+			}
 		});
 
 

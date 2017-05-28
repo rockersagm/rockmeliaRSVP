@@ -11,7 +11,6 @@ import { GiftsComponent } from './gifts/gifts.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-
 @NgModule({
 	declarations: [
 		MainComponent,
@@ -25,6 +24,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 		CommonModule,
 		FormsModule,
 		MainRoutingModule
+	],
+	providers: [
 	]
 })
 
