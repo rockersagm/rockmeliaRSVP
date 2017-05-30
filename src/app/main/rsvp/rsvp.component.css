@@ -3,8 +3,31 @@ table {
  	display:block;
 }
 
+.center {
+ 	margin: auto;
+ 	text-align: center;
+ 	float: none;
+  	display: block;
+  	padding:0px;
+ }
+
+.heading {
+	background-color:#767171;
+	color: white;
+	max-width: 150px;
+}
+
+.heading-image {
+	max-width:159px;
+}
+
 
 /* RSVP choices "Yes" "No" */
+.row-choice {
+	margin:5px;
+
+}
+
 .rsvp-choice {
 	padding: 5px 10px;
 	text-decoration: none;
@@ -13,8 +36,6 @@ table {
 	display: inline-block;
 	background-color: #eee;
 	border-radius: 4px;
-	display:inline;
-
 }
 .rsvp-choice:hover {
 	color: #039be5;
