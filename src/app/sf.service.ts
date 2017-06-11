@@ -109,11 +109,12 @@ export class SFService {
 			//*************  HARD CODE FOR TESTING PURPOSES **********
 			let c1 = new Contact("0032800000gZ07FAAS",
 								"Andrew Manetakis",
-						        false, //Dairy_Free__c:
-						        false, //Gluten_Free__c:
+						        true, //Dairy_Free__c:
+						        true, //Gluten_Free__c:
 						        "3025", //Guest_ID__c:
-						        false, //Vegetarian__c:
-						        false, //Nut_Free__c:
+						        true, //Vegetarian__c:
+						        true, //Nut_Free__c:
+						        'something wierd', //Other_Dietry_Requirements__c
 						        "Yes", //RSVP_Ceremony__c:
 						        "No", //RSVP_Friday_Night__c:
 						        "No Response", //RSVP_Reception__c:
@@ -127,6 +128,7 @@ export class SFService {
 						        "8280", //Guest_ID__c:
 						        true, //Vegetarian__c:
 						        false, //Nut_Free__c:
+						        '', //Other_Dietry_Requirements__c
 						        "No Response", //RSVP_Ceremony__c:
 						        "No", //RSVP_Friday_Night__c:
 						        "", //RSVP_Reception__c:
@@ -149,8 +151,21 @@ export class SFService {
 		headers.append('Content-Type','text/plain');
 		let options = new RequestOptions({ headers: headers });
 
-		console.log('submiRSVP');
+		console.log('submitRSVP');
 		return this.http.get(url + "rsvp?guestId="+guestID+"&event="+event+"&rsvp="+rsvp+"&familyId="+familyId, options)
+						.map((data) => this.extractData(data))
+						.catch(this.handleError);
+	}
+
+
+	changeDietary(familyId : string, guestID : string, preference : string, val : string) : Observable<any> {
+		let url = "https://rockmelia-cors-anywhere.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
+		let headers = new Headers();
+		headers.append('Content-Type','text/plain');
+		let options = new RequestOptions({ headers: headers });
+
+		console.log('removeDietary');
+		return this.http.get(url + "dietary?guestId="+guestID+"&preference="+preference+"&value="+val+"&familyId="+familyId, options)
 						.map((data) => this.extractData(data))
 						.catch(this.handleError);
 	}

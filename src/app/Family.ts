@@ -6,6 +6,7 @@ export class Contact {
 				public Guest_ID__c: string,
 				public Vegetarian__c: boolean,
 				public Nut_Free__c: boolean,
+				public Other_Dietry_Requirements__c: string,
 				public RSVP_Ceremony__c: string,
 				public RSVP_Friday_Night__c: string,
 				public RSVP_Reception__c: string,

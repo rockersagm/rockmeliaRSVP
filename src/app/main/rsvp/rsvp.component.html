@@ -9,6 +9,9 @@
 
 		<!-- TODO: make a mobile friendly version for screen size width < 1000 -->
 
+		<!-- TODO: get rid of table-hover class if on mobile device -->
+
+		<!-- TODO: feedback when all RSVPs are completed http://getbootstrap.com/components/#alerts -->
 			<table class="text-center table table-responsive table-condensed  table-hover center">
 				<thead>
 					<tr>
@@ -40,11 +43,48 @@
 
 					<tr *ngFor="let guest of family.Contacts; let i = index">
 						<th scope="row">
-							<div class="row row-choice rsvp-choice-names">
+							<div class="row rsvp-choice-names">
 								<div class="col">
 									{{ guest.Name }}
 								</div>
 							</div>
+							<div class="row">
+								<div class="col rsvp-choice-listDietary ">
+  									<button type="button"
+										(click)="doLogin()"
+										class="btn btn-primary btn-xs rsvp-choice-addDietaryButton"
+										>
+										<img style="vertical-align: center; text-align: center;" height="13px" src="../../../assets/plus.png"/> Dietary Requirements
+									</button>
+								</div>
+							</div>
+							<div *ngIf="guest.Vegetarian__c==true" class="row">
+								<div class="col rsvp-choice-listDietary ">
+									<li>Vegetarian  <div class="mylink" (click)="changeDietary(guest.Id, 'Vegetarian__c', 'false')">[remove]</div></li>
+								</div>
+							</div>
+							<div *ngIf="guest.Gluten_Free__c==true" class="row">
+								<div class="col rsvp-choice-listDietary ">
+									<li>Gluten Free  <div class="mylink" (click)="changeDietary(guest.Id, 'Vegetarian__c', 'false')">[remove]</div></li>
+								</div>
+							</div>
+							<div *ngIf="guest.Dairy_Free__c==true" class="row">
+								<div class="col rsvp-choice-listDietary ">
+									<li>Dairy Free  <div class="mylink" (click)="changeDietary(guest.Id, 'Vegetarian__c', 'false')">[remove]</div></li>
+								</div>
+							</div>
+							<div *ngIf="guest.Nut_Free__c==true" class="row">
+								<div class="col rsvp-choice-listDietary ">
+									<li>Nut Free  <div class="mylink" (click)="changeDietary(guest.Id, 'Vegetarian__c', 'false')">[remove]</div></li>
+								</div>
+							</div>
+							<div *ngIf="guest.Other_Dietry_Requirements__c!=null && guest.Other_Dietry_Requirements__c!='' " class="row">
+								<div class="col rsvp-choice-listDietary ">
+									<li>{{guest.Other_Dietry_Requirements__c}}  <div class="mylink" (click)="changeDietary(guest.Id, 'Vegetarian__c', 'false')">[remove]</div></li>
+								</div>
+							</div>
+
+
 						</th>
 						<td id="friday-{{i}}" >
 							<div class="rsvp-choice-parent ">

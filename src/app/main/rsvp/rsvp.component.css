@@ -21,6 +21,13 @@ table {
 	max-width:159px;
 }
 
+.mylink {
+	text-decoration: underline;
+	color : #014c8c;
+	cursor: pointer;
+	cursor: hand;
+	display: inline-block;
+}
 
 /* RSVP choices "Yes" "No" */
 .rsvp-choice {
@@ -55,8 +62,9 @@ table {
 	top: 0px;
 	left: 0px;
 	bottom: 0px;
-	background-image: url('../../../assets/heart.gif');
-	     background-size: 80% 80%;
+	/*background-image: url('../../../assets/heart.gif');*/
+	background-color: #333333;
+	background-size: 80% 80%;
 	background-repeat:no-repeat;
 	background-position:center;
 	opacity:0.5;
@@ -72,5 +80,30 @@ table {
 	padding:5px;
 }
 .rsvp-choice-names {
-	padding-top:40px;
+	padding-top:20px;
 }
+
+.rsvp-choice-listDietary {
+	font-weight: normal;
+    font-size: 12px;
+    background-color: transparent;
+}
+.rsvp-choice-addDietaryButton {
+    background-color: white; /* Blue */
+    border: none;
+    color: black;
+    padding: 2px 2px;
+    /*text-align: center;*/
+    text-decoration: none;
+    font-size: 12px;
+    /*display: block;*/
+    /*margin: auto;*/
+    font-weight: normal;
+    vertical-align: text-bottom;
+}
+.rsvp-choice-addDietaryButton:hover {
+	cursor: pointer;
+	cursor: hand;
+
+}
+

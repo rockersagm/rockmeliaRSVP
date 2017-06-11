@@ -39,6 +39,17 @@ export class RsvpComponent implements OnInit {
 		});
 	}
 
+	changeDietary(guestId, preference, val) {
+
+		this.pendingChanges = true;
+
+		this.sfService.changeDietary(this.family.Id, guestId, preference, val).subscribe((val) => {
+			console.log('removeDietary complete val='+val);
+			this.family = this.sfService.loadData();
+			this.pendingChanges = false;
+		});
+	}
+
 	submitNotes(notes) {
 		console.log(notes);
 	}
