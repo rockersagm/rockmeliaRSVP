@@ -23,16 +23,10 @@ table {
 
 
 /* RSVP choices "Yes" "No" */
-.row-choice {
-	margin:5px;
-
-}
-
 .rsvp-choice {
-	padding: 5px 10px;
+	padding: 5px;
 	text-decoration: none;
-	margin-right: 10px;
-	margin-top: 10px;
+	margin: 5px;
 	display: inline-block;
 	background-color: #eee;
 	border-radius: 4px;
@@ -49,4 +43,34 @@ table {
 }
 .rsvp-choice-no {
 	background-color: #f16969; /* Light Red */
+}
+.rsvp-choice-spinner {
+	display: none;
+	position: absolute;
+	z-index: 100
+}
+.rsvp-choice-disableBox {
+	width:100%;
+	height:100%;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	background-image: url('../../../assets/heart.gif');
+	     background-size: 80% 80%;
+	background-repeat:no-repeat;
+	background-position:center;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+	-moz-opacity:0.50;
+	display: none;
+	position: absolute;
+	z-index: 50;
+}
+
+.rsvp-choice-parent {
+	position:relative;
+	padding:5px;
+}
+.rsvp-choice-names {
+	padding-top:40px;
 }

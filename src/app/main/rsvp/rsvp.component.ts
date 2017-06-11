@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { SFService }          	from '../../sf.service';
 import { Family, Contact }      from '../../Family';
 import { DialogService }  		from '../../dialog.service';
@@ -13,14 +13,22 @@ export class RsvpComponent implements OnInit {
 	family : Family;
 	pendingChanges : boolean = false;
 
+
 	constructor(	public dialogService: DialogService,
-		private sfService: SFService) { }
+					private sfService: SFService,
+					private renderer : Renderer2
+				) {
+	}
 
 	ngOnInit() {
 		this.family = this.sfService.loadData();
 	}
 
-	onRSVP(guestId, event, rsvp) {
+	onRSVP(guestId, event, rsvp, index) {
+
+		this.renderer.selectRootElement("#"+event+"Spinner-"+index).style.display = 'inline-block';
+		this.renderer.selectRootElement("#"+event+"Disable-"+index).style.display = 'inline-block';
+
 		console.log('onRSVP clicked guestId='+guestId+' event=' + event + ' rsvp='+rsvp);
 		this.pendingChanges = true;
 
@@ -28,7 +36,6 @@ export class RsvpComponent implements OnInit {
 			console.log('submit complete val='+val);
 			this.family = this.sfService.loadData();
 			this.pendingChanges = false;
-
 		});
 	}
 

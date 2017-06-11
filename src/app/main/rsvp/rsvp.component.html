@@ -7,90 +7,101 @@
 	<div class="card-block text-center">
 		<div class="m-x-auto p-a-2 center">
 
-		<!--
+		<!-- TODO: make a mobile friendly version for screen size width < 1000 -->
 
-TODO.. convert table into bootstrap divs
-
-https://v4-alpha.getbootstrap.com/layout/grid/
-
-<div class="row">
-  <div class="col-sm">col-sm</div>
-  <div class="col-sm">col-sm</div>
-  <div class="col-sm">col-sm</div>
-</div>
-
-
-		-->.
-			<table class="text-center table table-responsive  table-hover center">
+			<table class="text-center table table-responsive table-condensed  table-hover center">
 				<thead>
 					<tr>
 						<th>&nbsp;</th>
 						<th>
-
-							<!-- TODO
-
-							link to the venues page
-
-							-->
-							<img class="center heading-image" src="../../../assets/friday.png">
-							<p class="center heading">Wedding Eve</p>
-							<p class="center heading">27th October 2017</p>
+							<a class="nav-link" routerLink="/main/venue">
+								<img class="center heading-image img-fluid" src="../../../assets/friday.png">
+								<p class="center heading">Wedding Eve</p>
+								<p class="center heading">27th October 2017</p>
+							</a>
 						</th>
 						<th>
-							<img class="center heading-image" src="../../../assets/wedding.png">
-							<p class="center heading">Wedding Day</p>
-							<p class="center heading">28th October 2017</p>
+							<a class="nav-link" routerLink="/main/venue">
+								<img class="center heading-image" src="../../../assets/wedding.png">
+								<p class="center heading">Wedding Day</p>
+								<p class="center heading">28th October 2017</p>
+							</a>
 						</th>
 						<th>
-							<img class="center heading-image" src="../../../assets/brunch.png">
-							<p class="center heading">Recovery Brunch</p>
-							<p class="center heading">29th October 2017</p>
+							<a class="nav-link" routerLink="/main/venue">
+								<img class="center heading-image" src="../../../assets/brunch.png">
+								<p class="center heading">Recovery Brunch</p>
+								<p class="center heading">29th October 2017</p>
+							</a>
 						</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="rsvpTableBody">
 
-					<tr *ngFor="let guest of family.Contacts">
+					<tr *ngFor="let guest of family.Contacts; let i = index">
 						<th scope="row">
-							<div class="row row-choice" style="padding-top:40px;">
+							<div class="row row-choice rsvp-choice-names">
 								<div class="col">
 									{{ guest.Name }}
 								</div>
 							</div>
 						</th>
-						<td>
-							<div class="row row-choice" >
-								<div class="col">
-									<div class="rsvp-choice" [class.rsvp-choice-yes]="guest.RSVP_Friday_Night__c=='Yes'" (click)="onRSVP(guest.Id , 'friday', 'Yes')">Yes, I would be delighted!</div>
+						<td id="friday-{{i}}" >
+							<div class="rsvp-choice-parent ">
+								<div class="row row-choice" >
+									<div class="col">
+										<div class="rsvp-choice" [class.rsvp-choice-yes]="guest.RSVP_Friday_Night__c=='Yes'" (click)="onRSVP(guest.Id , 'friday', 'Yes', i)">Joyfully accepts</div>
+
+									</div>
+								</div>
+
+								<div id="fridayDisable-{{i}}" class="rsvp-choice-disableBox" ></div>
+
+								<div id="fridaySpinner-{{i}}" class="ld ld-hourglass ld-cycle rsvp-choice-spinner"></div>
+
+								<div class="row row-choice">
+									<div class="col" >
+										<div class="rsvp-choice" [class.rsvp-choice-no]="guest.RSVP_Friday_Night__c=='No'" (click)="onRSVP(guest.Id , 'friday', 'No', i)">Regretfully declines</div>
+									</div>
 								</div>
 							</div>
-							<div class="row row-choice">
-								<div class="col" >
-									<div class="rsvp-choice" [class.rsvp-choice-no]="guest.RSVP_Friday_Night__c=='No'" (click)="onRSVP(guest.Id , 'friday', 'No')">No, but I will be there in spirit</div>
+
+						</td>
+						<td id="saturday-{{i}}" >
+							<div class="rsvp-choice-parent">
+								<div class="row row-choice" >
+									<div class="col">
+										<div class="rsvp-choice" [class.rsvp-choice-yes]="guest.RSVP_Reception__c=='Yes'" (click)="onRSVP(guest.Id , 'saturday', 'Yes', i)">Joyfully accepts</div>
+									</div>
+								</div>
+
+								<div id="saturdayDisable-{{i}}" class="rsvp-choice-disableBox " ></div>
+
+								<div id="saturdaySpinner-{{i}}" class="ld ld-hourglass ld-cycle rsvp-choice-spinner"></div>
+
+								<div class="row row-choice">
+									<div class="col" >
+										<div class="rsvp-choice" [class.rsvp-choice-no]="guest.RSVP_Reception__c=='No'" (click)="onRSVP(guest.Id , 'saturday', 'No', i)">Regretfully declines</div>
+									</div>
 								</div>
 							</div>
 						</td>
-						<td>
-							<div class="row row-choice" >
-								<div class="col">
-									<div class="rsvp-choice" [class.rsvp-choice-yes]="guest.RSVP_Reception__c=='Yes'" (click)="onRSVP(guest.Id , 'saturday', 'Yes')">Yes, I would be delighted!</div>
+						<td id="sunday-{{i}}" >
+							<div class="rsvp-choice-parent">
+								<div class="row row-choice" >
+									<div class="col">
+										<div class="rsvp-choice" [class.rsvp-choice-yes]="guest.RSVP_Sunday_Brunch__c=='Yes'" (click)="onRSVP(guest.Id , 'sunday', 'Yes', i)">Joyfully accepts</div>
+									</div>
 								</div>
-							</div>
-							<div class="row row-choice">
-								<div class="col" >
-									<div class="rsvp-choice" [class.rsvp-choice-no]="guest.RSVP_Reception__c=='No'" (click)="onRSVP(guest.Id , 'saturday', 'No')">No, but I will be there in spirit</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div class="row row-choice" >
-								<div class="col">
-									<div class="rsvp-choice" [class.rsvp-choice-yes]="guest.RSVP_Sunday_Brunch__c=='Yes'" (click)="onRSVP(guest.Id , 'sunday', 'Yes')">Yes, I would be delighted!</div>
-								</div>
-							</div>
-							<div class="row row-choice">
-								<div class="col" >
-									<div class="rsvp-choice" [class.rsvp-choice-no]="guest.RSVP_Sunday_Brunch__c=='No'" (click)="onRSVP(guest.Id , 'sunday', 'No')">No, but I will be there in spirit</div>
+
+								<div id="sundayDisable-{{i}}" class="rsvp-choice-disableBox " ></div>
+
+								<div id="sundaySpinner-{{i}}" class="ld ld-hourglass ld-cycle rsvp-choice-spinner"></div>
+
+								<div class="row row-choice">
+									<div class="col" >
+										<div class="rsvp-choice" [class.rsvp-choice-no]="guest.RSVP_Sunday_Brunch__c=='No'" (click)="onRSVP(guest.Id , 'sunday', 'No', i)">Regretfully declines</div>
+									</div>
 								</div>
 							</div>
 						</td>
@@ -98,6 +109,8 @@ https://v4-alpha.getbootstrap.com/layout/grid/
 				</tbody>
 
 			</table>
+
+
 		</div>
 
 	</div>
