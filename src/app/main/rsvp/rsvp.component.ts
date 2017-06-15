@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { SFService }          	from '../../sf.service';
 import { Family, Contact }      from '../../Family';
 import { DialogService }  		from '../../dialog.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'app-rsvp',
@@ -12,11 +13,13 @@ export class RsvpComponent implements OnInit {
 
 	family : Family;
 	pendingChanges : boolean = false;
-
+  	closeResult: string;
+	guestIdToUpdate:string
 
 	constructor(	public dialogService: DialogService,
 					private sfService: SFService,
-					private renderer : Renderer2
+					private renderer : Renderer2,
+					private modalService: NgbModal
 				) {
 	}
 
@@ -43,11 +46,41 @@ export class RsvpComponent implements OnInit {
 
 		this.pendingChanges = true;
 
-		this.sfService.changeDietary(this.family.Id, guestId, preference, val).subscribe((val) => {
-			console.log('removeDietary complete val='+val);
-			this.family = this.sfService.loadData();
-			this.pendingChanges = false;
+	//	this.sfService.changeDietary(this.family.Id, guestId, val).subscribe((val) => {
+//			console.log('removeDietary complete val='+val);
+//			this.family = this.sfService.loadData();
+//			this.pendingChanges = false;
+//		});
+	}
+
+	open(content) {
+		this.modalService.open(content).result.then((result) => {
+
+			this.sfService.changeDietary(this.family.Id,
+											result.Id,
+											result.Vegetarian__c,
+											result.Gluten_Free__c,
+											result.Dairy_Free__c,
+											result.Nut_Free__c,
+											result.Other_Dietry_Requirements__c).subscribe((val) => {
+				console.log('removeDietary complete val='+val);
+				this.family = this.sfService.loadData();
+				this.pendingChanges = false;
+			});
+
+		}, (reason) => {
+			this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 		});
+	}
+
+	private getDismissReason(reason: any): string {
+		if (reason === ModalDismissReasons.ESC) {
+			return 'by pressing ESC';
+		} else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+			return 'by clicking on a backdrop';
+		} else {
+			return  `with: ${reason}`;
+		}
 	}
 
 	submitNotes(notes) {

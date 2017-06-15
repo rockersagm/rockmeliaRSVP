@@ -158,14 +158,14 @@ export class SFService {
 	}
 
 
-	changeDietary(familyId : string, guestID : string, preference : string, val : string) : Observable<any> {
+	changeDietary(familyId : string, guestID : string, vegetarian : string, glutenFree : string, dairyFree : string, nutFree : string, other : string) : Observable<any> {
 		let url = "https://rockmelia-cors-anywhere.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
 		let headers = new Headers();
 		headers.append('Content-Type','text/plain');
 		let options = new RequestOptions({ headers: headers });
 
 		console.log('removeDietary');
-		return this.http.get(url + "dietary?guestId="+guestID+"&preference="+preference+"&value="+val+"&familyId="+familyId, options)
+		return this.http.get(url + "dietary?guestId="+guestID+"&vegetarian="+vegetarian+"&glutenFree="+glutenFree+"&dairyFree="+dairyFree+"&nutFree="+nutFree+"&other="+other+"&familyId="+familyId, options)
 						.map((data) => this.extractData(data))
 						.catch(this.handleError);
 	}

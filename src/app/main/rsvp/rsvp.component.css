@@ -29,6 +29,18 @@ table {
 	display: inline-block;
 }
 
+.rsvp-dietary-checkbox {
+	text-align: right;
+	padding-right: 0px;
+    font-size:large;
+}
+
+.rsvp-dietary-label {
+	text-align: left;
+	padding-right: 50px;
+    font-size:large;
+}
+
 /* RSVP choices "Yes" "No" */
 .rsvp-choice {
 	padding: 5px;
@@ -89,7 +101,7 @@ table {
     background-color: transparent;
 }
 .rsvp-choice-addDietaryButton {
-    background-color: white; /* Blue */
+    background-color: #f4f4f4; /* Blue */
     border: none;
     color: black;
     padding: 2px 2px;

@@ -51,36 +51,94 @@
 							<div class="row">
 								<div class="col rsvp-choice-listDietary ">
   									<button type="button"
-										(click)="doLogin()"
-										class="btn btn-primary btn-xs rsvp-choice-addDietaryButton"
+										(click)="open(content)"
+										class="btn btn-primary btn-xs btn-outline-primary rsvp-choice-addDietaryButton"
 										>
-										<img style="vertical-align: center; text-align: center;" height="13px" src="../../../assets/plus.png"/> Dietary Requirements
+										<!--img style="vertical-align: center; text-align: center;" height="13px" src="../../../assets/plus.png"/-->Update Dietary Requirements
 									</button>
+
+									<ng-template #content let-c="close" let-d="dismiss">
+									  <div class="modal-header">
+									    <h4 class="modal-title">{{ guest.Name }}<br/>
+									     Dietary Requirements</h4>
+									    <!--button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+									      <span aria-hidden="true">&times;</span>
+									    </button-->
+									  </div>
+									  <div class="modal-body">
+									  	<div class="row">
+									  		<div class="col rsvp-dietary-checkbox">
+												<input type="checkbox" [(ngModel)]="guest.Vegetarian__c"/>
+											</div>
+											<div class="col rsvp-dietary-label">
+												<p>Vegetarian</p>
+											</div>
+										</div>
+										<div class="row">
+									  		<div class="col rsvp-dietary-checkbox">
+												<input type="checkbox" [(ngModel)]="guest.Gluten_Free__c"/>
+											</div>
+											<div class="col rsvp-dietary-label">
+												<p>Gluten Free</p>
+											</div>
+										</div>
+										<div class="row">
+									  		<div class="col rsvp-dietary-checkbox">
+												<input type="checkbox" [(ngModel)]="guest.Dairy_Free__c"/>
+											</div>
+											<div class="col rsvp-dietary-label">
+												<p>Dairy Free</p>
+											</div>
+										</div>
+										<div class="row">
+									  		<div class="col rsvp-dietary-checkbox">
+												<input type="checkbox" [(ngModel)]="guest.Nut_Free__c"/>
+											</div>
+											<div class="col rsvp-dietary-label">
+												<p>Nut Free  </p>
+											</div>
+										</div>
+										<div class="row">
+									  		<div class="col rsvp-dietary-checkbox">
+												<p>Other</p>
+											</div>
+											<div class="col rsvp-dietary-label">
+												<textarea rows="2" [(ngModel)]="guest.Other_Dietry_Requirements__c">
+												</textarea>
+											</div>
+
+										</div>
+									  </div>
+									  <div class="modal-footer">
+									    <button type="button" class="btn btn-secondary" (click)="c(guest)">Save</button>
+									  </div>
+									</ng-template>
+
 								</div>
 							</div>
 							<div *ngIf="guest.Vegetarian__c==true" class="row">
 								<div class="col rsvp-choice-listDietary ">
-									<li>Vegetarian  <div class="mylink" (click)="changeDietary(guest.Id, 'Vegetarian__c', 'false')">[remove]</div></li>
+									<li>Vegetarian  <!--div class="mylink" (click)="changeDietary(guest.Id, 'Vegetarian__c', 'false')">[remove]</div--></li>
 								</div>
 							</div>
 							<div *ngIf="guest.Gluten_Free__c==true" class="row">
 								<div class="col rsvp-choice-listDietary ">
-									<li>Gluten Free  <div class="mylink" (click)="changeDietary(guest.Id, 'Vegetarian__c', 'false')">[remove]</div></li>
+									<li>Gluten Free  <!--div class="mylink" (click)="changeDietary(guest.Id, 'Gluten_Free__c', 'false')">[remove]</div--></li>
 								</div>
 							</div>
 							<div *ngIf="guest.Dairy_Free__c==true" class="row">
 								<div class="col rsvp-choice-listDietary ">
-									<li>Dairy Free  <div class="mylink" (click)="changeDietary(guest.Id, 'Vegetarian__c', 'false')">[remove]</div></li>
+									<li>Dairy Free  <!--div class="mylink" (click)="changeDietary(guest.Id, 'Dairy_Free__c', 'false')">[remove]</div--></li>
 								</div>
 							</div>
 							<div *ngIf="guest.Nut_Free__c==true" class="row">
 								<div class="col rsvp-choice-listDietary ">
-									<li>Nut Free  <div class="mylink" (click)="changeDietary(guest.Id, 'Vegetarian__c', 'false')">[remove]</div></li>
+									<li>Nut Free  <!--div class="mylink" (click)="changeDietary(guest.Id, 'Nut_Free__c', 'false')">[remove]</div--></li>
 								</div>
 							</div>
 							<div *ngIf="guest.Other_Dietry_Requirements__c!=null && guest.Other_Dietry_Requirements__c!='' " class="row">
 								<div class="col rsvp-choice-listDietary ">
-									<li>{{guest.Other_Dietry_Requirements__c}}  <div class="mylink" (click)="changeDietary(guest.Id, 'Vegetarian__c', 'false')">[remove]</div></li>
+									<li>{{guest.Other_Dietry_Requirements__c}}  <!--div class="mylink" (click)="changeDietary(guest.Id, 'Other_Dietry_Requirements__c', '')">[clear]</div--></li>
 								</div>
 							</div>
 
