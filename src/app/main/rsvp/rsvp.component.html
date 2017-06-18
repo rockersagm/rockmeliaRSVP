@@ -136,7 +136,7 @@
 									<li>Nut Free  <!--div class="mylink" (click)="changeDietary(guest.Id, 'Nut_Free__c', 'false')">[remove]</div--></li>
 								</div>
 							</div>
-							<div *ngIf="guest.Other_Dietry_Requirements__c!=null && guest.Other_Dietry_Requirements__c!='' " class="row">
+							<div *ngIf="guest.Other_Dietry_Requirements__c!=null && guest.Other_Dietry_Requirements__c!='' && guest.Other_Dietry_Requirements__c!='undefined' " class="row">
 								<div class="col rsvp-choice-listDietary ">
 									<li>{{guest.Other_Dietry_Requirements__c}}  <!--div class="mylink" (click)="changeDietary(guest.Id, 'Other_Dietry_Requirements__c', '')">[clear]</div--></li>
 								</div>
@@ -181,6 +181,31 @@
 									<div class="col" >
 										<div class="rsvp-choice" [class.rsvp-choice-no]="guest.RSVP_Reception__c=='No'" (click)="onRSVP(guest.Id , 'saturday', 'No', i)">Regretfully declines</div>
 									</div>
+								</div>
+
+								<div [style.display]="(guest.RSVP_Reception__c=='Yes') ? 'block' : 'none'"
+									  style="background:#eee;border-radius: .8em;
+
+
+									  "
+								>
+
+							  		<div class="row" style="padding:0px; margin:0px;margin:5px;">
+								  		<div class="col">
+											What song would get {{guest.FirstName}} to dance floor?
+										</div>
+									</div>
+							  		<div class="row" style="padding:0px; margin:0px;margin:5px;">
+										<div class="col-md-8 no-gutters" style="padding:0px; margin:auto; text-align: center;">
+											<textarea rows="1" style="width:100%; padding:0px; margin:0px;" placeholder="Enter song(s) here" [(ngModel)]="guest.Song__c">
+											</textarea>
+										</div>
+										<div class="ol-md-4 no-gutters" style="padding:0px; margin:auto; margin-top:0px; text-align: center;">
+											<input style="width:100%; padding:0px; margin:0px;" type="button" value="Save Song" (click)="updateGuestField(guest.Id, 'Song__c', guest.Song__c)"/>
+										</div>
+									</div>
+
+
 								</div>
 							</div>
 						</td>

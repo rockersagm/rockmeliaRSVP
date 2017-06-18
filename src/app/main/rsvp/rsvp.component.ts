@@ -13,14 +13,14 @@ export class RsvpComponent implements OnInit {
 
 	family : Family;
 	pendingChanges : boolean = false;
-  	closeResult: string;
+	closeResult: string;
 	guestIdToUpdate:string
 
 	constructor(	public dialogService: DialogService,
-					private sfService: SFService,
-					private renderer : Renderer2,
-					private modalService: NgbModal
-				) {
+		private sfService: SFService,
+		private renderer : Renderer2,
+		private modalService: NgbModal
+		) {
 	}
 
 	ngOnInit() {
@@ -46,31 +46,38 @@ export class RsvpComponent implements OnInit {
 
 		this.pendingChanges = true;
 
-	//	this.sfService.changeDietary(this.family.Id, guestId, val).subscribe((val) => {
-//			console.log('removeDietary complete val='+val);
-//			this.family = this.sfService.loadData();
-//			this.pendingChanges = false;
-//		});
+	}
+
+	updateGuestField(guestId, fieldName, value) {
+		this.sfService.updateGuestField(this.family.Id,
+				guestId,
+				fieldName,
+				value
+				).subscribe((val) => {
+					console.log('updateField complete fieldName='+fieldName+ ' value='+value);
+					this.family = this.sfService.loadData();
+					this.pendingChanges = false;
+				});
 	}
 
 	open(content) {
 		this.modalService.open(content).result.then((result) => {
 
 			this.sfService.changeDietary(this.family.Id,
-											result.Id,
-											result.Vegetarian__c,
-											result.Gluten_Free__c,
-											result.Dairy_Free__c,
-											result.Nut_Free__c,
-											result.Other_Dietry_Requirements__c).subscribe((val) => {
-				console.log('removeDietary complete val='+val);
-				this.family = this.sfService.loadData();
-				this.pendingChanges = false;
-			});
+				result.Id,
+				result.Vegetarian__c,
+				result.Gluten_Free__c,
+				result.Dairy_Free__c,
+				result.Nut_Free__c,
+				result.Other_Dietry_Requirements__c).subscribe((val) => {
+					console.log('removeDietary complete val='+val);
+					this.family = this.sfService.loadData();
+					this.pendingChanges = false;
+				});
 
-		}, (reason) => {
-			this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-		});
+			}, (reason) => {
+				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+			});
 	}
 
 	private getDismissReason(reason: any): string {

@@ -10,7 +10,9 @@ export class Contact {
 				public RSVP_Ceremony__c: string,
 				public RSVP_Friday_Night__c: string,
 				public RSVP_Reception__c: string,
-				public RSVP_Sunday_Brunch__c: string
+				public RSVP_Sunday_Brunch__c: string,
+				public FirstName: string,
+				public Song__c: string
 				) { }
 }
 

@@ -118,7 +118,9 @@ export class SFService {
 						        "Yes", //RSVP_Ceremony__c:
 						        "No", //RSVP_Friday_Night__c:
 						        "No Response", //RSVP_Reception__c:
-						        "No Response" //RSVP_Sunday_Brunch__c:
+						        "No Response", //RSVP_Sunday_Brunch__c:
+						        "Andrew", //FirstName
+   						        "" //Song__c
 			        			);
 
 			let c2 = new Contact("0032800000gZ07FAAS",
@@ -132,7 +134,9 @@ export class SFService {
 						        "No Response", //RSVP_Ceremony__c:
 						        "No", //RSVP_Friday_Night__c:
 						        "", //RSVP_Reception__c:
-						        "Yes" //RSVP_Sunday_Brunch__c:
+						        "Yes", //RSVP_Sunday_Brunch__c:
+						        "Amelia", //FirstName
+						        "" //Song__c
 			        			);
 
 			this.family = new Family("00128000010XWpBAAW",
@@ -170,6 +174,18 @@ export class SFService {
 						.catch(this.handleError);
 	}
 
+
+	updateGuestField(familyId : string, guestID : string, fieldName : string, value : string) : Observable<any> {
+		let url = "https://rockmelia-cors-anywhere.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
+		let headers = new Headers();
+		headers.append('Content-Type','text/plain');
+		let options = new RequestOptions({ headers: headers });
+
+		console.log('removeDietary');
+		return this.http.get(url + "updateGuestField?guestId="+guestID+"&fieldName="+fieldName+"&value="+value+"&familyId="+familyId, options)
+						.map((data) => this.extractData(data))
+						.catch(this.handleError);
+	}
 
 	private handleError (error: Response | any) {
 		let errMsg: string;
