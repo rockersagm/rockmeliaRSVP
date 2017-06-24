@@ -12,7 +12,7 @@
 		<!-- TODO: get rid of table-hover class if on mobile device -->
 
 		<!-- TODO: feedback when all RSVPs are completed http://getbootstrap.com/components/#alerts -->
-			<table class="text-center table table-responsive table-condensed  table-hover center">
+			<table class="text-center table table-responsive table-condensed  <!--table-hover--> center">
 				<thead>
 					<tr>
 						<th>&nbsp;</th>
@@ -54,61 +54,73 @@
 										(click)="open(content)"
 										class="btn btn-primary btn-xs btn-outline-primary rsvp-choice-addDietaryButton"
 										>
-										<!--img style="vertical-align: center; text-align: center;" height="13px" src="../../../assets/plus.png"/-->Update Dietary Requirements
+										Dietary / Add Notes
 									</button>
 
 									<ng-template #content let-c="close" let-d="dismiss">
 									  <div class="modal-header">
-									    <h4 class="modal-title">{{ guest.Name }}<br/>
-									     Dietary Requirements</h4>
+									    <h4 class="modal-title">{{ guest.Name }}<br/></h4>
 									    <!--button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
 									      <span aria-hidden="true">&times;</span>
 									    </button-->
 									  </div>
 									  <div class="modal-body">
-									  	<div class="row">
-									  		<div class="col rsvp-dietary-checkbox">
-												<input type="checkbox" [(ngModel)]="guest.Vegetarian__c"/>
-											</div>
-											<div class="col rsvp-dietary-label">
-												<p>Vegetarian</p>
-											</div>
-										</div>
-										<div class="row">
-									  		<div class="col rsvp-dietary-checkbox">
-												<input type="checkbox" [(ngModel)]="guest.Gluten_Free__c"/>
-											</div>
-											<div class="col rsvp-dietary-label">
-												<p>Gluten Free</p>
-											</div>
-										</div>
-										<div class="row">
-									  		<div class="col rsvp-dietary-checkbox">
-												<input type="checkbox" [(ngModel)]="guest.Dairy_Free__c"/>
-											</div>
-											<div class="col rsvp-dietary-label">
-												<p>Dairy Free</p>
-											</div>
-										</div>
-										<div class="row">
-									  		<div class="col rsvp-dietary-checkbox">
-												<input type="checkbox" [(ngModel)]="guest.Nut_Free__c"/>
-											</div>
-											<div class="col rsvp-dietary-label">
-												<p>Nut Free  </p>
-											</div>
-										</div>
-										<div class="row">
-									  		<div class="col rsvp-dietary-checkbox">
-												<p>Other</p>
-											</div>
-											<div class="col rsvp-dietary-label">
-												<textarea rows="2" [(ngModel)]="guest.Other_Dietry_Requirements__c">
-												</textarea>
-											</div>
 
-										</div>
+									  	<div class="card">
+
+										  	<h5 class="card-header">Dietry Requirements</h5>
+										  		<div class="row">
+											  		<br/>
+										  		</div>
+										  		<div class="row">
+										  			<div class="col-2 rsvp-dietary-checkbox">
+										  				<input type="checkbox" [(ngModel)]="guest.Vegetarian__c"/>
+										  			</div>
+										  			<div class="col-4 rsvp-dietary-label">
+										  				<p>Vegetarian</p>
+										  			</div>
+										  			<div class="col-2 rsvp-dietary-checkbox">
+										  				<input type="checkbox" [(ngModel)]="guest.Gluten_Free__c"/>
+										  			</div>
+										  			<div class="col-4 rsvp-dietary-label">
+										  				<p>Gluten Free</p>
+										  			</div>
+										  		</div>
+										  		<div class="row">
+										  			<div class="col-2 rsvp-dietary-checkbox">
+										  				<input type="checkbox" [(ngModel)]="guest.Dairy_Free__c"/>
+										  			</div>
+										  			<div class="col-4 rsvp-dietary-label">
+										  				<p>Dairy Free</p>
+										  			</div>
+										  			<div class="col-2 rsvp-dietary-checkbox">
+										  				<input type="checkbox" [(ngModel)]="guest.Nut_Free__c"/>
+										  			</div>
+										  			<div class="col-4 rsvp-dietary-label">
+										  				<p>Nut Free  </p>
+										  			</div>
+										  		</div>
+										  		<div class="row">
+										  			<div class="col rsvp-dietary-checkbox">
+										  				<p>Other Dietary Infomation</p>
+										  			</div>
+										  			<div class="col rsvp-dietary-label">
+										  				<textarea rows="2" [(ngModel)]="guest.Other_Dietry_Requirements__c">
+										  				</textarea>
+										  			</div>
+
+										  		</div>
+										  	</div>
+
+										  	<div class="card">
+
+										  	<h5 class="card-header">Guest Notes</h5>
+								  				<textarea placeholder="Add notes here" rows="3" [(ngModel)]="guest.Guest_Notes__c">
+								  				</textarea>
+										  	</div>
+
 									  </div>
+
 									  <div class="modal-footer">
 									    <button type="button" class="btn btn-secondary" (click)="c(guest)">Save</button>
 									  </div>
@@ -139,6 +151,11 @@
 							<div *ngIf="guest.Other_Dietry_Requirements__c!=null && guest.Other_Dietry_Requirements__c!='' && guest.Other_Dietry_Requirements__c!='undefined' " class="row">
 								<div class="col rsvp-choice-listDietary ">
 									<li>{{guest.Other_Dietry_Requirements__c}}  <!--div class="mylink" (click)="changeDietary(guest.Id, 'Other_Dietry_Requirements__c', '')">[clear]</div--></li>
+								</div>
+							</div>
+							<div *ngIf="guest.Guest_Notes__c!=null && guest.Guest_Notes__c!='' && guest.Guest_Notes__c!='undefined' " class="row">
+								<div class="col rsvp-choice-listDietary ">
+									<li>{{guest.Guest_Notes__c}}  <!--div class="mylink" (click)="changeDietary(guest.Id, 'Other_Dietry_Requirements__c', '')">[clear]</div--></li>
 								</div>
 							</div>
 
@@ -184,10 +201,8 @@
 								</div>
 
 								<div [style.display]="(guest.RSVP_Reception__c=='Yes') ? 'block' : 'none'"
-									  style="background:#eee;border-radius: .8em;
-
-
-									  "
+									  class="rsvp-choice-yes"
+									  style="border-radius: .8em;"
 								>
 
 							  		<div class="row" style="padding:0px; margin:0px;margin:5px;">
@@ -197,11 +212,23 @@
 									</div>
 							  		<div class="row" style="padding:0px; margin:0px;margin:5px;">
 										<div class="col-md-8 no-gutters" style="padding:0px; margin:auto; text-align: center;">
-											<textarea rows="1" style="width:100%; padding:0px; margin:0px;" placeholder="Enter song(s) here" [(ngModel)]="guest.Song__c">
+											<textarea 	rows="1"
+														style="width:100%; padding:0px; margin:0px;"
+														placeholder="Enter song(s) here"
+														[(ngModel)]="guest.Song__c"
+														(ngModelChange)="songChange(guest)"
+											>
 											</textarea>
 										</div>
-										<div class="ol-md-4 no-gutters" style="padding:0px; margin:auto; margin-top:0px; text-align: center;">
-											<input style="width:100%; padding:0px; margin:0px;" type="button" value="Save Song" (click)="updateGuestField(guest.Id, 'Song__c', guest.Song__c)"/>
+										<div class="col-md-8 no-gutters" style="padding:0px; margin:auto; margin-top:0px; text-align: center;">
+											<input 	[style.display]="(guest.songChanged==true) ? 'block' : 'none'"
+													style="width:100%; padding:0px; margin:0px;"
+													type="button"
+													value="Save Song"
+													(click)="updateGuestField(guest, 'Song__c', guest.Song__c)"/>
+											<p 	[style.display]="(guest.songSaved==true) ? 'block' : 'none'">
+												Song Saved, Thanks!
+											</p>
 										</div>
 									</div>
 

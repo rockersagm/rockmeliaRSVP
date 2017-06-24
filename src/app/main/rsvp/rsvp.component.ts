@@ -48,15 +48,23 @@ export class RsvpComponent implements OnInit {
 
 	}
 
-	updateGuestField(guestId, fieldName, value) {
+	songChange(guest) {
+		guest.songChanged = true;
+		guest.songSaved = false;
+	}
+
+	updateGuestField(guest, fieldName, value) {
 		this.sfService.updateGuestField(this.family.Id,
-				guestId,
+				guest.Id,
 				fieldName,
 				value
 				).subscribe((val) => {
 					console.log('updateField complete fieldName='+fieldName+ ' value='+value);
-					this.family = this.sfService.loadData();
+					//this.family = this.sfService.loadData();
 					this.pendingChanges = false;
+					guest.songSaved = true;
+ 					guest.songChanged = false;
+
 				});
 	}
 
@@ -69,10 +77,12 @@ export class RsvpComponent implements OnInit {
 				result.Gluten_Free__c,
 				result.Dairy_Free__c,
 				result.Nut_Free__c,
-				result.Other_Dietry_Requirements__c).subscribe((val) => {
+				result.Other_Dietry_Requirements__c,
+				result.Guest_Notes__c).subscribe((val) => {
 					console.log('removeDietary complete val='+val);
 					this.family = this.sfService.loadData();
 					this.pendingChanges = false;
+
 				});
 
 			}, (reason) => {

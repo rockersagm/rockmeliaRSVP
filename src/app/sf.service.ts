@@ -120,7 +120,8 @@ export class SFService {
 						        "No Response", //RSVP_Reception__c:
 						        "No Response", //RSVP_Sunday_Brunch__c:
 						        "Andrew", //FirstName
-   						        "" //Song__c
+   						        "", //Song__c
+   						        "", //Guest_Notes__c
 			        			);
 
 			let c2 = new Contact("0032800000gZ07FAAS",
@@ -130,14 +131,15 @@ export class SFService {
 						        "8280", //Guest_ID__c:
 						        true, //Vegetarian__c:
 						        false, //Nut_Free__c:
-						        '', //Other_Dietry_Requirements__c
+						        "nope", //Other_Dietry_Requirements__c
 						        "No Response", //RSVP_Ceremony__c:
 						        "No", //RSVP_Friday_Night__c:
 						        "", //RSVP_Reception__c:
 						        "Yes", //RSVP_Sunday_Brunch__c:
 						        "Amelia", //FirstName
-						        "" //Song__c
-			        			);
+   						        "", //Song__c
+   						        "", //Guest_Notes__c
+   						        );
 
 			this.family = new Family("00128000010XWpBAAW",
 									 "Andrew & Amelia",
@@ -162,14 +164,22 @@ export class SFService {
 	}
 
 
-	changeDietary(familyId : string, guestID : string, vegetarian : string, glutenFree : string, dairyFree : string, nutFree : string, other : string) : Observable<any> {
+	changeDietary(familyId : string, guestID : string, vegetarian : string, glutenFree : string, dairyFree : string, nutFree : string, other : string, notes: string) : Observable<any> {
 		let url = "https://rockmelia-cors-anywhere.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
 		let headers = new Headers();
 		headers.append('Content-Type','text/plain');
 		let options = new RequestOptions({ headers: headers });
 
 		console.log('removeDietary');
-		return this.http.get(url + "dietary?guestId="+guestID+"&vegetarian="+vegetarian+"&glutenFree="+glutenFree+"&dairyFree="+dairyFree+"&nutFree="+nutFree+"&other="+other+"&familyId="+familyId, options)
+		return this.http.get(url + "dietary?guestId="+guestID
+								+"&vegetarian="+vegetarian
+								+"&glutenFree="+glutenFree
+								+"&dairyFree="+dairyFree
+								+"&nutFree="+nutFree
+								+"&other="+other
+								+"&notes="+notes
+								+"&familyId="+familyId
+								, options)
 						.map((data) => this.extractData(data))
 						.catch(this.handleError);
 	}

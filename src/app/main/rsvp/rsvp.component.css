@@ -30,14 +30,14 @@ table {
 }
 
 .rsvp-dietary-checkbox {
-	text-align: right;
+	text-align: center;
 	padding-right: 0px;
     font-size:large;
 }
 
 .rsvp-dietary-label {
 	text-align: left;
-	padding-right: 50px;
+	padding-right: 10px;
     font-size:large;
 }
 
