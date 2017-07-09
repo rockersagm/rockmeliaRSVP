@@ -10,6 +10,8 @@ import { RsvpComponent } from './rsvp/rsvp.component';
 import { GiftsComponent } from './gifts/gifts.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
 	declarations: [
@@ -23,7 +25,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 	NgbModule.forRoot(),
 		CommonModule,
 		FormsModule,
-		MainRoutingModule
+		MainRoutingModule,
+		AgmCoreModule.forRoot({
+      	apiKey: 'AIzaSyCafWH11IGVUHnZnlczYZkyIPqPvvNwhBE'
+    })
 	],
 	providers: [
 	]

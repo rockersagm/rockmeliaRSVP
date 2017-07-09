@@ -27,3 +27,8 @@
 .img-venue {
 	width: 500px;
 }
+
+agm-map {
+  height: 400px;
+
+}
