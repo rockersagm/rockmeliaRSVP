@@ -18,26 +18,25 @@ export class VenueComponent implements OnInit {
 
 	ngOnInit() {
 
-		var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 		var markers = {
 
 			eve: {
 				legend: '<div style="display:inline-block; v-align:center;">Wedding Eve</br>Royal Hotel</div>',
 				tooltip: 'Wedding Eve - The Royal Hotel',
 				position: {lat: this.royal_lat, lng: this.royal_lng},
-				icon: iconBase + 'bars.png'
+				icon: '../../../assets/friday.png'
 			},
 			wedding: {
 				legend: '<div style="display:inline-block; v-align:center;">Wedding</br>Bendooley Estate</div>',
 				tooltip: 'Wedding - Bendooley Estate',
 				position: {lat: this.bendooley_lat, lng: this.bendooley_lng},
-				icon: iconBase + 'arts.png'
+				icon: '../../../assets/wedding.png'
 			},
 			brunch: {
 				legend: '<div style="display:inline-block; v-align:center;">Recovery Brunch</br>Rift Coach House</div>',
 				tooltip: 'Recovery Brunch - Rift Coach House',
 				position: {lat: this.rift_lat, lng: this.rift_lng},
-				icon: iconBase + 'coffee.png'
+				icon: '../../../assets/brunch.png'
 			}
 		};
 
