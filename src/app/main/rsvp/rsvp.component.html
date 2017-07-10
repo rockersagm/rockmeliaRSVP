@@ -105,7 +105,7 @@
 										  				<p>Other Dietary Infomation</p>
 										  			</div>
 										  			<div class="col rsvp-dietary-label">
-										  				<textarea rows="2" [(ngModel)]="guest.Other_Dietry_Requirements__c">
+										  				<textarea placeholder="Add other dietary requirements here" rows="2" [(ngModel)]="guest.Other_Dietry_Requirements__c">
 										  				</textarea>
 										  			</div>
 
@@ -115,7 +115,7 @@
 										  	<div class="card">
 
 										  	<h5 class="card-header">Guest Notes</h5>
-								  				<textarea placeholder="Add notes here" rows="3" [(ngModel)]="guest.Guest_Notes__c">
+								  				<textarea placeholder="Add any notes here" rows="3" [(ngModel)]="guest.Guest_Notes__c">
 								  				</textarea>
 										  	</div>
 
@@ -264,12 +264,5 @@
 		</div>
 
 	</div>
-	<div class="card-footer text-muted">
-		?
-	</div>
-
-	<input #notes type="text">
-	<button (click)="submitNotes(notes.value)">Submit Notes</button>
-
 
 </div>

@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } 	from '@angular/platform-browser/animations';
 
 import { AppComponent }				from './app.component';
 import { PageNotFoundComponent } 	from './page-not-found.component';
-import { ComposeMessageComponent } 	from './compose-message.component';
 import { DialogService }           	from './dialog.service';
 
 import { AppRoutingModule } 		from './app-routing.module';
@@ -19,8 +18,7 @@ import { SFService }          from './sf.service';
 @NgModule({
 	declarations: [
 		AppComponent,
-		PageNotFoundComponent,
-		ComposeMessageComponent
+		PageNotFoundComponent
 	],
 	imports: [
 //		NgbModule.forRoot(),
