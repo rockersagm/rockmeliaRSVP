@@ -24,7 +24,7 @@ export class VenueComponent implements OnInit {
 				legend: '<div style="display:inline-block; v-align:center;">Wedding Eve</br>Royal Hotel</div>',
 				tooltip: 'Wedding Eve - The Royal Hotel',
 				position: {lat: this.royal_lat, lng: this.royal_lng},
-				icon: '../../../assets/friday.png'
+				icon: '../../../assets/friday-icon.png'
 			},
 			wedding: {
 				legend: '<div style="display:inline-block; v-align:center;">Wedding</br>Bendooley Estate</div>',
