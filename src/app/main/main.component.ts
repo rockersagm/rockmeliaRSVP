@@ -36,6 +36,11 @@ export class MainComponent implements OnInit {
 	  				});
 	}
 
+	collapse() {
+		console.log('collapsing');
+		//document.getElementById('navbarToggler').collapse('hide');
+	}
+
 	//calculate the countdown to the ceremony
 	updateCounter() {
 		let wedding = moment("2017-10-28 16:00+11");

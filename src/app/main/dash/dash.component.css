@@ -51,9 +51,14 @@
 	color:black;
 	opacity: 1;
     filter: alpha(opacity=100);
-    font-family: 'Sofia', Open Sans;
+    font-family: Open Sans;
     font-style: normal;
   	font-weight: 400;
 }
+
+/*
+font-family: 'Sofia', Open Sans;
+
+*/
 
 
