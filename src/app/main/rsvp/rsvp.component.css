@@ -95,6 +95,21 @@ table {
 	padding-top:20px;
 }
 
+.rsvp-status {
+	text-align: left;
+	padding: 0px 0px 10px 0px;
+	font-size:76%;
+}
+
+.rsvp-status-incomplete {
+	color:  #f16969; /* Light Red */
+}
+
+hr {
+	padding: 0px 0px 10px 0px;
+	margin:0px;
+}
+
 .rsvp-choice-listDietary {
 	font-weight: normal;
     font-size: 12px;

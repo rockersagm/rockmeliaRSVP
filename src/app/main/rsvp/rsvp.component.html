@@ -47,7 +47,17 @@
 								<div class="col">
 									{{ guest.Name }}
 								</div>
+
 							</div>
+
+							<div class="row" *ngIf="
+							(guest.RSVP_Friday_Night__c=='Yes' || guest.RSVP_Friday_Night__c=='No') &&
+							(guest.RSVP_Reception__c=='Yes' || guest.RSVP_Reception__c=='No') &&
+							(guest.RSVP_Sunday_Brunch__c=='Yes' || guest.RSVP_Sunday_Brunch__c=='No')
+							; then thenBlock else elseBlock"></div>
+
+							<ng-template #thenBlock><div class="col rsvp-status">RSVP Confirmed <img width="15" src="../../../assets/tick.png"/></div><hr></ng-template>
+							<ng-template #elseBlock><div class="col rsvp-status rsvp-status-incomplete">RSVP Incomplete</div><hr></ng-template>
 							<div class="row">
 								<div class="col rsvp-choice-listDietary ">
   									<button type="button"

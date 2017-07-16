@@ -10,10 +10,11 @@ export class VenueComponent implements OnInit {
 
 	bendooley_lat: number = -34.469108;
 	bendooley_lng: number = 150.3606354;
-	rift_lat: number = -34.4773958;
-	rift_lng: number = 150.4349801;
-	royal_lat: number = -34.4794119;
-	royal_lng: number = 150.418366;
+	rift_lat: number = -34.477453;
+	rift_lng: number = 150.437215;
+	royal_lat: number = -34.477825;
+	royal_lng: number = 150.417756;
+
 	constructor() { }
 
 	ngOnInit() {
@@ -30,13 +31,13 @@ export class VenueComponent implements OnInit {
 				legend: '<div style="display:inline-block; v-align:center;">Wedding</br>Bendooley Estate</div>',
 				tooltip: 'Wedding - Bendooley Estate',
 				position: {lat: this.bendooley_lat, lng: this.bendooley_lng},
-				icon: '../../../assets/wedding.png'
+				icon: '../../../assets/saturday-icon.png'
 			},
 			brunch: {
 				legend: '<div style="display:inline-block; v-align:center;">Recovery Brunch</br>Rift Coach House</div>',
 				tooltip: 'Recovery Brunch - Rift Coach House',
 				position: {lat: this.rift_lat, lng: this.rift_lng},
-				icon: '../../../assets/brunch.png'
+				icon: '../../../assets/sunday-icon.png'
 			}
 		};
 
@@ -45,23 +46,23 @@ export class VenueComponent implements OnInit {
 			zoom: 13
 		};
 		var map = new google.maps.Map(document.getElementById("map"), mapProp);
-
+		let iconSize = new google.maps.Size(35,35);
 		var markerBendooley = new google.maps.Marker({
 			position: markers['wedding'].position,
 			title:  markers['wedding'].tooltip,
-			icon: {url: markers['wedding'].icon, scaledSize: new google.maps.Size(25, 25)},
+			icon: {url: markers['wedding'].icon, scaledSize: iconSize},
 			map: map
 		});
 		var markerRift = new google.maps.Marker({
 			position: markers['brunch'].position,
 			title:  markers['brunch'].tooltip,
-			icon:{url: markers['brunch'].icon, scaledSize: new google.maps.Size(25, 25)},
+			icon:{url: markers['brunch'].icon, scaledSize: iconSize},
 			map: map
 		});
 		var markerRoyal = new google.maps.Marker({
 			position: markers['eve'].position,
 			title:  markers['eve'].tooltip,
-			icon: {url: markers['eve'].icon, scaledSize: new google.maps.Size(25, 25)},
+			icon: {url: markers['eve'].icon, scaledSize: iconSize},
 			map: map
 		});
 
@@ -72,7 +73,7 @@ export class VenueComponent implements OnInit {
 			var name = type.legend;
 			var icon = type.icon;
 			var div = document.createElement('div');
-			div.innerHTML = '<img src="' + icon + '" width="25" > ' + name;
+			div.innerHTML = '<img src="' + icon + '" width="35" > ' + name;
 			legend.appendChild(div);
 		}
 

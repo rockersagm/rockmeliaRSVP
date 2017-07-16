@@ -1,57 +1,63 @@
 <div class="card" >
 	<div class="card-block">
+
 		<ngb-carousel >
 			<ng-template ngbSlide *ngFor="let image of imageList">
+				<img class="img-fluid" src="../../assets/wreath-left.png"/>
 				<div class="mx-auto" >
 					<img class="img-fluid" style="max-height:400px;" src="../../assets/carousel/{{image.image}}" >
-					<!--div class="carousel-caption">
-						<h3>{{image.header}}</h3>
+					<!--div class="carousel-caption caption">
+						<h4>{{image.header}}</h4>
 						<p>{{image.text}}</p>
 					</div-->
+					<div class="caption center">
+						<p>{{image.header}} | {{image.text}}</p>
+
+					</div>
 				</div>
+				<img class="img-fluid"  src="../../assets/wreath-right.jpg"/>
+
 			</ng-template>
 		</ngb-carousel>
 	</div>
 </div>
 
 <div class="dash-div">
-
-
 	<div class="row section-row no-gutters center"
-	style="background-image: url('../../../assets/banner-rsvp.jpg');
-	background-size:cover;
-	">
-	<a routerLink="/main/rsvp" routerLinkActive="active">
+		style="background-image: url('../../../assets/banner-rsvp2.jpg');
+		background-size:cover;
+		">
+		<a routerLink="/main/rsvp" routerLinkActive="active">
+			<div class="transparent">
+				<div class="center-vert">
+					Submit or Update your RSVP Here
+				</div>
+			</div>
+		</a>
+	</div>
+	<div class="row section-row no-gutters center"
+	style="background-image: url('../../../assets/banner-venue2.jpg');
+	background-size:cover;">
+
+	<a routerLink="/main/venue" routerLinkActive="active">
 		<div class="transparent">
 			<div class="center-vert">
-				Submit or Update your RSVP Here
+				Venues
 			</div>
 		</div>
 	</a>
-</div>
-<div class="row section-row no-gutters center"
-style="background-image: url('../../../assets/banner-venue.jpg');
-background-size:cover;">
-
-<a routerLink="/main/venue" routerLinkActive="active">
-	<div class="transparent">
-		<div class="center-vert">
-			Venues
-		</div>
 	</div>
-</a>
-</div>
-<div class="row section-row no-gutters center"
-style="background-image: url('../../../assets/banner-gifts.jpg');
-background-size:cover;">
+	<div class="row section-row no-gutters center"
+	style="background-image: url('../../../assets/banner-gifts2.jpg');
+	background-size:cover;">
 
-<a routerLink="/main/gifts" routerLinkActive="active">
-	<div class="transparent">
-		<div class="center-vert">
-			Gift Registry Information
+	<a routerLink="/main/gifts" routerLinkActive="active">
+		<div class="transparent">
+			<div class="center-vert">
+				Gift Registry Information
+			</div>
 		</div>
+	</a>
 	</div>
-</a>
-</div>
 
 </div>

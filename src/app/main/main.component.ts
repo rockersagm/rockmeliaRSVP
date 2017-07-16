@@ -43,7 +43,7 @@ export class MainComponent implements OnInit {
 
 	//calculate the countdown to the ceremony
 	updateCounter() {
-		let wedding = moment("2017-10-28 16:00+11");
+		let wedding = moment("2017-10-28 16:15+11");
 		let now = moment();
 		let days = wedding.diff(now, 'days');
 		let hours = wedding.diff(now, 'hours');

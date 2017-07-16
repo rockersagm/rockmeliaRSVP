@@ -22,7 +22,12 @@
 .carousel-image {
  	max-height: 300px;
 }
-
+.caption {
+	padding:0px;
+	margin:0px;
+	vertical-align: bottom;
+	font-size: 120%;
+}
 
 .transparent {
 	vertical-align: center;
