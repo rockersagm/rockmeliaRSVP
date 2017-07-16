@@ -18,16 +18,62 @@
  }
 
 .carousel{
+
+}
+.carousel-col {
+	padding:0px;
+	margin:0px;
 }
 .carousel-image {
  	max-height: 300px;
+	padding:0px;
+
 }
 .caption {
 	padding:0px;
 	margin:0px;
 	vertical-align: bottom;
-	font-size: 120%;
 }
+.carousel-center {
+    margin: 0px auto;
+    float: none;
+	padding:0px;
+
+}
+.wreath {
+	max-height:300px;
+	padding:0px;
+}
+
+/* xs < 768 */
+@media screen and (max-width: 767px) {
+    .caption {
+        font-size: 0.8em;
+    }
+}
+
+/* sm */
+@media screen and (min-width: 768px) {
+    .caption {
+        font-size: 0.9em;
+    }
+}
+
+/* md */
+@media screen and (min-width: 992px) {
+    .caption {
+        font-size: 1.0em;
+    }
+}
+
+/* lg */
+@media screen and (min-width: 1200px) {
+    .caption {
+        font-size: 1.1em;
+    }
+}
+
+
 
 .transparent {
 	vertical-align: center;

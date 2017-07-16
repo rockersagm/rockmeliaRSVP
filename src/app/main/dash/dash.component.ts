@@ -132,7 +132,7 @@ export class DashComponent implements OnInit {
 			this.imageList.push(new CarouselImage("image94.JPG", "Wedding Terrara House Estate", "November 2014"));
 			this.imageList.push(new CarouselImage("image95.JPG", "Wedding Terrara House Estate", "November 2014"));
 			this.imageList.push(new CarouselImage("image96.JPG", "Wedding Terrara House Estate", "November 2014"));
-			this.imageList.push(new CarouselImage("image97.JPG", "Wedding Terrara Hosue Estate", "November 2014"));
+			this.imageList.push(new CarouselImage("image97.JPG", "Wedding Terrara House Estate", "November 2014"));
 			this.imageList.push(new CarouselImage("image98.JPG", "Wedding Terrara House Estate", "November 2014"));
 			this.imageList.push(new CarouselImage("image99.JPG", "Porteno", "December 2014"));
 			this.imageList.push(new CarouselImage("image100.JPG", "The Stoned Crow Crows Nest", "December 2014"));

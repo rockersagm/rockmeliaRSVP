@@ -3,19 +3,21 @@
 
 		<ngb-carousel >
 			<ng-template ngbSlide *ngFor="let image of imageList">
-				<img class="img-fluid" src="../../assets/wreath-left.png"/>
-				<div class="mx-auto" >
-					<img class="img-fluid" style="max-height:400px;" src="../../assets/carousel/{{image.image}}" >
-					<!--div class="carousel-caption caption">
-						<h4>{{image.header}}</h4>
-						<p>{{image.text}}</p>
-					</div-->
-					<div class="caption center">
-						<p>{{image.header}} | {{image.text}}</p>
 
-					</div>
-				</div>
-				<img class="img-fluid"  src="../../assets/wreath-right.jpg"/>
+
+						<img class="img-fluid wreath" src="../../assets/wreath-left.png"/>
+
+						<div class="mx-auto" >
+							<img class="img-fluid" style="max-height:400px;" src="../../assets/carousel/{{image.image}}" >
+							<!--div class="carousel-caption caption">
+								<h4>{{image.header}}</h4>
+								<p>{{image.text}}</p>
+							</div-->
+							<div class="caption center">
+								<p>{{image.header}} | {{image.text}}</p>
+							</div>
+						</div>
+						<img class="img-fluid wreath" src="../../assets/wreath-right.jpg"/>
 
 			</ng-template>
 		</ngb-carousel>
