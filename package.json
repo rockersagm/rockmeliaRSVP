@@ -27,7 +27,6 @@
     "@angular/platform-server": "^4.2.6",
     "@angular/router": "^4.2.6",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.25",
-    "@types/node": "~6.0.60",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "express": "^4.15.2",
@@ -38,6 +37,7 @@
   },
   "devDependencies": {
     "@types/jasmine": "2.5.38",
+    "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
@@ -53,6 +53,6 @@
   },
   "engines": {
     "node": "8.1.4",
-    "npm": "5.3.0"
+    "npm": "5.0.3"
   }
 }
