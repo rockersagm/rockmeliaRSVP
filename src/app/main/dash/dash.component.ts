@@ -99,7 +99,7 @@ export class DashComponent implements OnInit {
 			this.imageList.push(new CarouselImage("image61.JPG", "Acropolis Athens", "December 2016"));
 			this.imageList.push(new CarouselImage("image62.JPG", "Acropolis Athens", "December 2016"));
 			this.imageList.push(new CarouselImage("image63.JPG", "Monastiraki Athens", "December 2016"));
-			this.imageList.push(new CarouselImage("image64.JPG", "A for Athes", "December 2016"));
+			this.imageList.push(new CarouselImage("image64.JPG", "A for Athens", "December 2016"));
 			this.imageList.push(new CarouselImage("image65.JPG", "Turramurra", "December 2015"));
 			this.imageList.push(new CarouselImage("image66.JPG", "Cafe Sydney", "June 2014"));
 			this.imageList.push(new CarouselImage("image67.JPG", "Bankstown Airport", "June 2014"));
