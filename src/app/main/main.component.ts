@@ -19,6 +19,7 @@ export class MainComponent implements OnInit {
 	public minsToGo : string;
 	public secsToGo : string;
 	public family : Family;
+  isCollapsed = true;
 
 	constructor(private router: Router,
 				private authService: AuthService,
@@ -40,6 +41,11 @@ export class MainComponent implements OnInit {
 		console.log('collapsing');
 		//document.getElementById('navbarToggler').collapse('hide');
 	}
+
+	  public get menuIcon(): string {
+    return this.isCollapsed ? '☰' : '✖';
+  }
+
 
 	//calculate the countdown to the ceremony
 	updateCounter() {

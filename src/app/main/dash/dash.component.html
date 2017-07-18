@@ -1,31 +1,32 @@
 <div class="card" >
 	<div class="card-block">
 
-		<ngb-carousel >
-			<ng-template ngbSlide *ngFor="let image of imageList">
-
-
-						<img class="img-fluid wreath" src="../../assets/wreath-left.jpg"/>
-
+		<div class="row">
+			<div class="col">
+				<img class="img-fluid wreath" src="../../assets/wreath-left.jpg"/>
+			</div>
+			<div class="col-6">
+				<ngb-carousel >
+					<ng-template ngbSlide *ngFor="let image of imageList">
 						<div class="mx-auto" >
 							<img class="img-fluid" style="max-height:400px;" src="../../assets/carousel/{{image.image}}" >
-							<!--div class="carousel-caption caption">
-								<h4>{{image.header}}</h4>
-								<p>{{image.text}}</p>
-							</div-->
 							<div class="caption center">
 								<p>{{image.header}} | {{image.text}}</p>
 							</div>
 						</div>
-						<img class="img-fluid wreath" src="../../assets/wreath-right.jpg"/>
+					</ng-template>
+				</ngb-carousel>
+			</div>
+			<div class="col" >
+				<img class="img-fluid wreath" style="float: right;" src="../../assets/wreath-right.jpg"/>
+			</div>
 
-			</ng-template>
-		</ngb-carousel>
+		</div>
 	</div>
 </div>
 
 <div class="dash-div">
-	<div class="row section-row no-gutters center"
+		<div class="row section-row no-gutters center"
 		style="background-image: url('../../../assets/banner-rsvp2.jpg');
 		background-size:cover;
 		">

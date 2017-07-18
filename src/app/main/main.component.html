@@ -34,15 +34,47 @@
 
 	</div>
 
-<!-- TODO: auto close after clicking a nav item or X seconds -->
+<!-- TODO: auto close after clicking a nav item or X seconds
+<nav class="navbar navbar-fixed-top navbar-light bg-inverse">
+  <div class="clearfix">
+    <button (click)="isCollapsed = !isCollapsed"
+      class="navbar-toggler pull-xs-right hidden-sm-up" type="button"
+      aria-controls="bd-main-nav"
+      aria-label="Toggle navigation">
+    		{{menuIcon}}
+    </button>
+
+  </div>
+  <div class="navbar-toggleable-xs navbar-collapse" id="bd-main-nav"
+  [attr.aria-expanded]="!isCollapsed" [ngClass]="{collapse: isCollapsed}">
+    <ul class="nav navbar-nav">
+      <li (click)="isCollapsed = true" class="nav-item">
+        <a class="navbar-brand hidden-xs-down" routerLink="/main/rsvp">RSVP3</a>
+
+      </li>
+      <li (click)="isCollapsed = true" class="nav-item" >
+        <a class="nav-item nav-link" routerLink="/main/rsvp">RSVP3</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+-->
+
 
 	<nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
+
+		<button (click)="isCollapsed = !isCollapsed"
+				class="navbar-toggler"
+				type="button"
+				aria-controls="navbarToggler"
+				aria-expanded="false"
+				aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
 		</button>
 
 
-		<div class="collapse navbar-collapse" id="navbarToggler">
+		<div class="navbar-collapse" id="navbarToggler" [attr.aria-expanded]="!isCollapsed" [ngClass]="{collapse: isCollapsed}">
+
 			<a class="navbar-brand" routerLink="/main/dash">#rockmelia Wedding</a>
 
 			<div class="navbar-toggler"  >
@@ -53,19 +85,19 @@
 			</div>
 
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active">
-					<a class="nav-link" routerLink="/main/dash">Home<span class="sr-only">(current)</span></a>
+				<li class="nav-item" (click)="isCollapsed = true">
+					<a class="nav-link" routerLink="/main/dash">Home</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" (click)="collapse()" routerLink="/main/rsvp">RSVP</a>
+				<li class="nav-item" (click)="isCollapsed = true">
+					<a class="nav-link" routerLink="/main/rsvp">RSVP</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" (click)="isCollapsed = true">
 					<a class="nav-link" routerLink="/main/venue">Venue Details</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" (click)="isCollapsed = true">
 					<a class="nav-link" routerLink="/main/gifts">Gift Registry</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" (click)="isCollapsed = true">
 					<a class="nav-link" routerLink="login" (click)="[gotoLogout()]">Logout</a>
 				</li>
 			</ul>
