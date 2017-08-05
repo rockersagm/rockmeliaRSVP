@@ -25,6 +25,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 		CommonModule,
 		FormsModule,
 		MainRoutingModule
+
 	],
 	providers: [
 	]

@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
 		this.authService.login(this.loginCode, this.postcode).subscribe((val) => {
 			this.message = val;
 
-			if (this.authService.isLoggedIn) {
+			if (this.authService.getIsLoggedIn()) {
 				// Get the redirect URL from our auth service
 				// If no redirect has been set, use the default
 				let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/main';

@@ -17,7 +17,7 @@ const routes = [
 	{	path: '',
 		component: MainComponent,
 		//*************  COMMENTED OUT FOR DEVELOPMENT ***************
-	    //canActivate: [AuthGuard],
+	    canActivate: [AuthGuard],
 
         canDeactivate: [CanDeactivateGuard],
 		children: [

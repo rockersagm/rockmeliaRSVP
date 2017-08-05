@@ -12,8 +12,8 @@ import { AppRoutingModule } 		from './app-routing.module';
 
 import { SFService }          from './sf.service';
 
+import {Ng2Webstorage} from 'ngx-webstorage';
 
-//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
 	declarations: [
@@ -21,12 +21,12 @@ import { SFService }          from './sf.service';
 		PageNotFoundComponent
 	],
 	imports: [
-//		NgbModule.forRoot(),
 		BrowserModule,
 		FormsModule,
 		HttpModule,
 		BrowserAnimationsModule,
-		AppRoutingModule
+		AppRoutingModule,
+		Ng2Webstorage
 	],
 	providers: [
 		DialogService,

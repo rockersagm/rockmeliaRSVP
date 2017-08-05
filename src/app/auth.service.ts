@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
 
-	isLoggedIn: boolean = false;
+	private isLoggedIn: boolean = false;
 
 	// store the URL so we can redirect after logging in
 	redirectUrl: string;
@@ -23,6 +23,7 @@ export class AuthService {
 								.map(val => {
 									if(val=="Success") {
 										this.isLoggedIn = true;
+										sessionStorage.setItem('loggedIn', 'true');
 									}
 									return val;
 								});
@@ -30,5 +31,11 @@ export class AuthService {
 
 	logout(): void {
   		this.isLoggedIn = false;
+  		sessionStorage.setItem('loggedIn', 'false');
+
+  	}
+
+  	public getIsLoggedIn() : boolean {
+  		return sessionStorage.getItem('loggedIn') === 'true';
   	}
 }

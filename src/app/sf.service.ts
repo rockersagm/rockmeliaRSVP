@@ -1,5 +1,7 @@
 import { Injectable }    from '@angular/core';
 import { Http, Response, Headers, RequestOptions} from '@angular/http';
+import { Router, NavigationExtras } from '@angular/router';
+
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -9,15 +11,19 @@ import { Family, Contact }          from './Family';
 import '../js/ua-parser.min.js';
 
 import { environment } from '../environments/environment';
+
+
 declare const UAParser: any;
 
 @Injectable()
 export class SFService {
 
 	family : Family;
+
 	audit : Audit;
 
-	constructor(private http: Http) {
+	constructor(private http: Http,
+				private router: Router) {
 	}
 
 	public getDetails() {
@@ -91,12 +97,13 @@ export class SFService {
 		let body = res.json();
 		console.log(body);
 		if(body.error) {
+			console.error(body.error);
 			return body.error;
 		}
 		else {
 			this.family = body;
 			this.family.Contacts = body.Contacts.records;
-
+			console.log('family data received and stored');
 			return "Success";
 		}
 
@@ -105,7 +112,7 @@ export class SFService {
 	public loadData() : Family {
 
 		//TEMP - DELETE THIS************************************************
-		if (!environment.production && this.family==undefined) {
+	/*	if (!environment.production && this.family==undefined) {
 			//*************  HARD CODE FOR TESTING PURPOSES **********
 			let c1 = new Contact("0032800000gZ07FAAS",
 								"Andrew Manetakis",
@@ -141,14 +148,49 @@ export class SFService {
    						        "", //Guest_Notes__c
    						        );
 
+
 			this.family = new Family("00128000010XWpBAAW",
 									 "Andrew & Amelia",
 									 "1400",
 									 [c1,c2]);
 		}
 		//END TTEMP*************************************************************
-
+*/
+		console.log('loadData called');
+		if(this.family==undefined) {
+			console.log('family is undefined - refresh from sf');
+			let familyId = sessionStorage.getItem('familyId');
+			if(familyId == undefined || familyId == '') {
+				console.log('no familyId - go to login page');
+				this.router.navigate(['/login']);
+			} else {
+				console.log('familyId found to refresh from ', familyId);
+				this.family = new Family(familyId, '','', [] );
+				this.refresh(familyId);
+			}
+		} else {
+			sessionStorage.setItem('familyId',this.family.Id);
+			console.log(this.family);
+		}
 		return this.family;
+	}
+
+
+	refresh(familyId : string) : Observable<any> {
+		console.log('refresh start');
+
+		let url = "https://rockmelia-cors-anywhere.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
+		let headers = new Headers();
+		headers.append('Content-Type','text/plain');
+		let options = new RequestOptions({ headers: headers });
+
+		console.log('refresh');
+		return this.http.get(url + "refresh?familyId="+familyId, options)
+						.map((data) => console.log('asdasdasdasdasda'))
+						.catch(this.handleError);
+//		return this.http.get(url + "refresh?familyId="+familyId, options)
+//						.map((data) => this.extractData(data))
+//						.catch(this.handleError);
 	}
 
 	submitRSVP(familyId : string, guestID : string, event : string, rsvp : string) : Observable<any> {

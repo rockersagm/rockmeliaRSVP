@@ -26,4 +26,5 @@ export class Family{
   					public Family_Id__c: string,
   					public Contacts: Contact[]
   				) { }
+
 }
