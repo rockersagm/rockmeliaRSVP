@@ -1,4 +1,4 @@
-<div class="card text-center">
+<div class="card text-center" *ngIf="family!==undefined">
 	<div class="card-header">
 		<h3 class="center">
 			{{family.Name}}'s RSVP Details
@@ -40,7 +40,7 @@
 						</th>
 					</tr>
 				</thead>
-				<tbody id="rsvpTableBody">
+				<tbody id="rsvpTableBody" >
 
 					<tr *ngFor="let guest of family.Contacts; let i = index">
 						<th scope="row">

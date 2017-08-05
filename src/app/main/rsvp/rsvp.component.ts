@@ -24,7 +24,31 @@ export class RsvpComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.family = this.sfService.loadData();
+		//this.family = this.sfService.loadData();
+		// this.sfService.loadData();
+
+		// let url = "https://rockmelia-cors-anywhere.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
+		// let headers = new Headers();
+		// headers.append('Content-Type','text/plain');
+		// let options = new RequestOptions({ headers: headers });
+
+		// this.http.get(url + "refresh?familyId="+familyId, options)
+		// 				.map((data) => {
+		// 					this.sfService.extractData(data);
+		// 					this.family = this.sfService.loadData();
+		// 				})
+		// 				.subscribe();
+
+		this.sfService.refreshFamily().subscribe(
+			(data) => {
+				//console.log('rsvp onit data = ' + data);
+				//console.log(this.sfService.loadData());
+				this.family = this.sfService.loadData();
+
+			}
+		);
+
+
 	}
 
 	onRSVP(guestId, event, rsvp, index) {
@@ -32,11 +56,11 @@ export class RsvpComponent implements OnInit {
 		this.renderer.selectRootElement("#"+event+"Spinner-"+index).style.display = 'inline-block';
 		this.renderer.selectRootElement("#"+event+"Disable-"+index).style.display = 'inline-block';
 
-		console.log('onRSVP clicked guestId='+guestId+' event=' + event + ' rsvp='+rsvp);
+		//console.log('onRSVP clicked guestId='+guestId+' event=' + event + ' rsvp='+rsvp);
 		this.pendingChanges = true;
 
 		this.sfService.submitRSVP(this.family.Id, guestId, event, rsvp).subscribe((val) => {
-			console.log('submit complete val='+val);
+			//console.log('submit complete val='+val);
 			this.family = this.sfService.loadData();
 			this.pendingChanges = false;
 		});
@@ -59,7 +83,7 @@ export class RsvpComponent implements OnInit {
 				fieldName,
 				value
 				).subscribe((val) => {
-					console.log('updateField complete fieldName='+fieldName+ ' value='+value);
+					//console.log('updateField complete fieldName='+fieldName+ ' value='+value);
 					//this.family = this.sfService.loadData();
 					this.pendingChanges = false;
 					guest.songSaved = true;
@@ -79,7 +103,7 @@ export class RsvpComponent implements OnInit {
 				result.Nut_Free__c,
 				result.Other_Dietry_Requirements__c,
 				result.Guest_Notes__c).subscribe((val) => {
-					console.log('removeDietary complete val='+val);
+					//console.log('removeDietary complete val='+val);
 					this.family = this.sfService.loadData();
 					this.pendingChanges = false;
 
@@ -101,7 +125,7 @@ export class RsvpComponent implements OnInit {
 	}
 
 	submitNotes(notes) {
-		console.log(notes);
+		//console.log(notes);
 	}
 
 	canDeactivate(): Promise<boolean> | boolean {

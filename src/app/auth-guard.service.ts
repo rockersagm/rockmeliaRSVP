@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   checkLogin(url: string): boolean {
   	if (this.authService.getIsLoggedIn()) {
-  	  	console.log('AuthGuard.checkLogin returning TRUE');
+  	  	////console.log('AuthGuard.checkLogin returning TRUE');
     	return true;
     }
 
@@ -52,7 +52,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     // Navigate to the login page with extras
     this.router.navigate(['/login'], navigationExtras);
 
-	console.log('AuthGuard.checkLogin returning FALSE');
+	////console.log('AuthGuard.checkLogin returning FALSE');
 	return false;
   }
 }

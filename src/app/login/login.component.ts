@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
 	constructor(public authService: AuthService,
 				private router: Router) {
-		console.log('login component constructing');
+		//console.log('login component constructing');
 
 	}
 
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 		this.loginText = 'Logging in...';
 		this.message ='';
 
-		console.log("login request loginCode=["+this.loginCode+"] postcode=["+this.postcode+"]");
+		//console.log("login request loginCode=["+this.loginCode+"] postcode=["+this.postcode+"]");
 
 
 		this.authService.login(this.loginCode, this.postcode).subscribe((val) => {
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
 					preserveQueryParams: true,
 					preserveFragment: true
 				};
-				console.log("logged in. redirect=["+redirect+"]");
+				//console.log("logged in. redirect=["+redirect+"]");
 
 				// Redirect the user
 				this.router.navigate([redirect], navigationExtras);

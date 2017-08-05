@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Family }      from '../../Family';
 import { CarouselImage }      from './CarouselImage';
 
 import { SFService }          	from '../../sf.service';
@@ -14,7 +13,6 @@ import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 })
 export class DashComponent implements OnInit {
-	family : Family;
 	imageList : CarouselImage[] = [];
 
 	constructor(private sfService: SFService,
@@ -24,16 +22,10 @@ export class DashComponent implements OnInit {
 	    config.interval = 3000;
 	    config.wrap = true;
 	    config.keyboard = false;
-
-
 	}
 
 	ngOnInit() {
-		this.family = this.sfService.loadData();
 
-
-		//Need to have >150 photos to get rid of the horizontal selection bar on the image.
-		//TODO: get more photos then remove the silly FOR loop
 		let totalImages = 2;
 		for(let i = 1; i <= totalImages; i++) {
 			this.imageList.push(new CarouselImage("image1.JPG", "First Anniversary Quay", "February 2015"));

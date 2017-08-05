@@ -19,16 +19,22 @@ export class MainComponent implements OnInit {
 	public minsToGo : string;
 	public secsToGo : string;
 	public family : Family;
-  isCollapsed = true;
+  	isCollapsed = true;
 
 	constructor(private router: Router,
 				private authService: AuthService,
 				private sfService: SFService) {
+		this.family = new Family('', '','', [] );
 	}
 
 	ngOnInit() {
-		this.family = this.sfService.loadData();
+		//this.family = this.sfService.loadData();
+		this.sfService.refreshFamily().subscribe(
+			(data) => {
+				this.family = this.sfService.loadData();
+			}
 
+		);
 		//run timer update every second
 		Observable.interval(1000)
 					.startWith(0)
@@ -38,7 +44,7 @@ export class MainComponent implements OnInit {
 	}
 
 	collapse() {
-		console.log('collapsing');
+		//console.log('collapsing');
 		//document.getElementById('navbarToggler').collapse('hide');
 	}
 
@@ -60,6 +66,8 @@ export class MainComponent implements OnInit {
 		this.hoursToGo = (hours - (days * 24) ).toString();
 		this.minsToGo = (mins - (hours * 60) ).toString();
 		this.secsToGo = ( secs - (mins * 60) ).toString();
+
+		this.family.Name = this.family.Name;
 	}
 
 	gotoLogout() {

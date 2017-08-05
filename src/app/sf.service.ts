@@ -42,7 +42,7 @@ export class SFService {
 		//parse the user agent details
 		var parser = new UAParser();
 		var result = parser.getResult();
-	    console.log(result);
+	    //console.log(result);
 
     	this.audit.browser = result.browser.name;
     	this.audit.browserVersion = result.browser.version;
@@ -83,8 +83,8 @@ export class SFService {
 		}
 
 		let options = new RequestOptions({ headers: headers });
-		console.log(headers);
-		console.log(options);
+		//console.log(headers);
+		//console.log(options);
 
 
 		return this.http.get(url + "login?loginCode="+loginCode+"&postalcode="+postalCode, options)
@@ -92,10 +92,10 @@ export class SFService {
 						.catch(this.handleError);
 	}
 
-	private extractData(res: Response) {
+	public extractData(res: Response) {
 
 		let body = res.json();
-		console.log(body);
+		//console.log(body);
 		if(body.error) {
 			console.error(body.error);
 			return body.error;
@@ -103,7 +103,7 @@ export class SFService {
 		else {
 			this.family = body;
 			this.family.Contacts = body.Contacts.records;
-			console.log('family data received and stored');
+			//console.log('family data received and stored');
 			return "Success";
 		}
 
@@ -156,41 +156,43 @@ export class SFService {
 		}
 		//END TTEMP*************************************************************
 */
-		console.log('loadData called');
+
+		return this.family;
+	}
+
+	public refreshFamily() : Observable<any> {
 		if(this.family==undefined) {
-			console.log('family is undefined - refresh from sf');
+			//console.log('refreshFamily 1A - family is undefined - refresh from sf');
 			let familyId = sessionStorage.getItem('familyId');
 			if(familyId == undefined || familyId == '') {
-				console.log('no familyId - go to login page');
+				//console.log('refreshFamily 2A- no familyId - go to login page');
 				this.router.navigate(['/login']);
 			} else {
-				console.log('familyId found to refresh from ', familyId);
-				this.family = new Family(familyId, '','', [] );
-				this.refresh(familyId);
+				//console.log('refreshFamily 2B - familyId found to refresh from ', familyId);
+				//this.family = new Family(familyId, '','', [] );
+				return this.refresh(familyId);
 			}
+
+
 		} else {
 			sessionStorage.setItem('familyId',this.family.Id);
-			console.log(this.family);
+			//console.log(this.family);
 		}
-		return this.family;
+		return Observable.of(this.family);
 	}
 
 
 	refresh(familyId : string) : Observable<any> {
-		console.log('refresh start');
+		//console.log('refresh start');
 
 		let url = "https://rockmelia-cors-anywhere.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
 		let headers = new Headers();
 		headers.append('Content-Type','text/plain');
 		let options = new RequestOptions({ headers: headers });
 
-		console.log('refresh');
 		return this.http.get(url + "refresh?familyId="+familyId, options)
-						.map((data) => console.log('asdasdasdasdasda'))
+						.map((data) => this.extractData(data))
 						.catch(this.handleError);
-//		return this.http.get(url + "refresh?familyId="+familyId, options)
-//						.map((data) => this.extractData(data))
-//						.catch(this.handleError);
 	}
 
 	submitRSVP(familyId : string, guestID : string, event : string, rsvp : string) : Observable<any> {
@@ -199,7 +201,7 @@ export class SFService {
 		headers.append('Content-Type','text/plain');
 		let options = new RequestOptions({ headers: headers });
 
-		console.log('submitRSVP');
+		//console.log('submitRSVP');
 		return this.http.get(url + "rsvp?guestId="+guestID+"&event="+event+"&rsvp="+rsvp+"&familyId="+familyId, options)
 						.map((data) => this.extractData(data))
 						.catch(this.handleError);
@@ -212,7 +214,7 @@ export class SFService {
 		headers.append('Content-Type','text/plain');
 		let options = new RequestOptions({ headers: headers });
 
-		console.log('removeDietary');
+		//console.log('removeDietary');
 		return this.http.get(url + "dietary?guestId="+guestID
 								+"&vegetarian="+vegetarian
 								+"&glutenFree="+glutenFree
@@ -233,7 +235,7 @@ export class SFService {
 		headers.append('Content-Type','text/plain');
 		let options = new RequestOptions({ headers: headers });
 
-		console.log('removeDietary');
+		//console.log('removeDietary');
 		return this.http.get(url + "updateGuestField?guestId="+guestID+"&fieldName="+fieldName+"&value="+value+"&familyId="+familyId, options)
 						.map((data) => this.extractData(data))
 						.catch(this.handleError);

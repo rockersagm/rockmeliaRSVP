@@ -12,9 +12,7 @@ import { SFService }          from './sf.service';
 
 			<div class="footer">
 				<p class="footer-text">
-					#rockmelia RSVP Website 2017
-					<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact </a>
-					<router-outlet name="popup"></router-outlet>
+					#rockmelia RSVP Website 2017 | Designed by #rockmelia | Made by Andrew Manetakis
 				</p>
 			</div>
 
