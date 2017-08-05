@@ -41,10 +41,7 @@ export class RsvpComponent implements OnInit {
 
 		this.sfService.refreshFamily().subscribe(
 			(data) => {
-				//console.log('rsvp onit data = ' + data);
-				//console.log(this.sfService.loadData());
 				this.family = this.sfService.loadData();
-
 			}
 		);
 
