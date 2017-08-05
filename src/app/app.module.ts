@@ -12,8 +12,6 @@ import { AppRoutingModule } 		from './app-routing.module';
 
 import { SFService }          from './sf.service';
 
-import {Ng2Webstorage} from 'ngx-webstorage';
-
 
 @NgModule({
 	declarations: [
@@ -25,8 +23,7 @@ import {Ng2Webstorage} from 'ngx-webstorage';
 		FormsModule,
 		HttpModule,
 		BrowserAnimationsModule,
-		AppRoutingModule,
-		Ng2Webstorage
+		AppRoutingModule
 	],
 	providers: [
 		DialogService,
