@@ -82,6 +82,14 @@
   	height: 100%;
 }
 
+.transparent-map {
+	vertical-align: center;
+	background:#7f7f7f;
+  	background:rgba(255,255,255,0.2);
+  	height: 100%;
+}
+
+
 .center-vert {
 	position: relative;
     top: 50%;
