@@ -1,5 +1,5 @@
 import { Component, OnInit } 	from '@angular/core';
-import { Router } 				from '@angular/router';
+import { Router, NavigationEnd  } 				from '@angular/router';
 import { AuthService }      	from '../auth.service';
 import { Family, Contact }      from '../Family';
 import { Observable } 			from 'rxjs/Rx';
@@ -28,6 +28,13 @@ export class MainComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.router.events.subscribe((evt) => {
+        if (!(evt instanceof NavigationEnd)) {
+            return;
+        }
+        document.body.scrollTop = 0;
+    });
+
 		//this.family = this.sfService.loadData();
 		this.sfService.refreshFamily().subscribe(
 			(data) => {
