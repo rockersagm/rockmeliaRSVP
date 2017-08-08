@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarouselImage }      from './CarouselImage';
+import { Router, NavigationEnd  } 				from '@angular/router';
 
 import { SFService }          	from '../../sf.service';
 
@@ -16,6 +17,7 @@ export class DashComponent implements OnInit {
 	imageList : CarouselImage[] = [];
 
 	constructor(private sfService: SFService,
+				private router: Router,
 				config: NgbCarouselConfig
 				) {
     	// customize default values of carousels used by this component tree
@@ -25,7 +27,12 @@ export class DashComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
+		this.router.events.subscribe((evt) => {
+        if (!(evt instanceof NavigationEnd)) {
+            return;
+        }
+        document.body.scrollTop = 0;
+    });
 		let totalImages = 2;
 		for(let i = 1; i <= totalImages; i++) {
 			this.imageList.push(new CarouselImage("image1.JPG", "First Anniversary Quay", "February 2015"));
