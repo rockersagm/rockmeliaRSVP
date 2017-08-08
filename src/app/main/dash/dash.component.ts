@@ -33,6 +33,7 @@ export class DashComponent implements OnInit {
         }
         document.body.scrollTop = 0;
     });
+		window.scrollTo(0,0);
 		let totalImages = 2;
 		for(let i = 1; i <= totalImages; i++) {
 			this.imageList.push(new CarouselImage("image1.JPG", "First Anniversary Quay", "February 2015"));
