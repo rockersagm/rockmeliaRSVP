@@ -28,13 +28,6 @@ export class MainComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.router.events.subscribe((evt) => {
-        if (!(evt instanceof NavigationEnd)) {
-            return;
-        }
-        document.body.scrollTop = 0;
-    });
-
 		//this.family = this.sfService.loadData();
 		this.sfService.refreshFamily().subscribe(
 			(data) => {
