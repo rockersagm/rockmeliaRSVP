@@ -3,6 +3,15 @@ table {
  	display:block;
 }
 
+@media(max-width:600px) {
+.table:before {
+    padding: 2px 5px;
+    content: "Swipe left for more";
+    color: #fff;
+    background: #333;
+}
+}
+
 .center {
  	margin: auto;
  	text-align: center;
