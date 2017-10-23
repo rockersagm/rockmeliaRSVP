@@ -59,7 +59,7 @@ export class SFService {
 
 	login(loginCode: String, postalCode: String) : Observable<any> {
 
-		let url = "https://rockmelia-cors-anywhere.herokuapp.com/https://rockmelia-developer-edition.ap2.force.com/";
+		let url = "https://rockmelia-cors-anywhere.herokuapp.com/https://rockmelia-developer-edition.ap7.force.com/";
 		let headers = new Headers();
 		headers.append('X-Requested-With', 'XMLHttpRequest');
         headers.append('Content-Type','text/plain');
